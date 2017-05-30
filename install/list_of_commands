@@ -1,0 +1,11 @@
+#CV2 library
+conda install -c menpo opencv=2.4.11
+#git clone https://github.com/Itseez/opencv/
+
+# Other libraries
+pip segyio
+
+# QT - GUI
+conda install libpng
+conda install qt
+
