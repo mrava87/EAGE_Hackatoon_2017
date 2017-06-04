@@ -1,8 +1,19 @@
 #CV2 library
 conda install -c menpo opencv=2.4.11
-#git clone https://github.com/Itseez/opencv/
 
-# Other libraries
+#OPENCV library
+brew install cmake
+brew tap homebrew/science
+brew install --with-tbb opencv
+
+or
+
+download Xcode
+git clone https://github.com/Itseez/opencv/
+follow: https://blogs.wcode.org/2014/10/howto-install-build-and-use-opencv-macosx-10-10/
+
+
+# Other python libraries
 pip segyio
 
 # QT - GUI
