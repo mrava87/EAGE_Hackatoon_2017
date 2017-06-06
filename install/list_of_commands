@@ -2,12 +2,16 @@
 conda install -c menpo opencv=2.4.11
 
 #OPENCV library
+
+#linux
+http://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html - not tested...
+
+# mac 1
 brew install cmake
 brew tap homebrew/science
 brew install --with-tbb opencv
 
-or
-
+# mac 2
 download Xcode
 git clone https://github.com/Itseez/opencv/
 follow: https://blogs.wcode.org/2014/10/howto-install-build-and-use-opencv-macosx-10-10/
