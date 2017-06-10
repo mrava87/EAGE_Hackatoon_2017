@@ -28,13 +28,16 @@ Created on Sat Jun 10 14:38:54 2017
 import glob
 import os
 import ntpath
+from shutil import copyfile
 
 # Change to directory containing positive image folder
 os.chdir("/Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/fault/")
 currentPath=os.getcwd()
 
-positiveFPath=currentPath+'/*_stack.png'
-annotationDir=currentPath+'/info/annotations/'
+positiveFPath=currentPath+'/*_stacksub.png'
+annotationDir=currentPath+'/info/pos/'
+posDir=currentPath+'/info/pos/'
+
 infoLstFPath='./info/info.lst'
 
 print currentPath
@@ -44,7 +47,11 @@ allPosFiles=glob.glob(positiveFPath)
 print positiveFPath
 print allPosFiles
 
-# If annotations file does exist make it
+# If pos dir does exist make it
+if not os.path.exists(posDir):
+    os.makedirs(posDir)
+
+# If annotations dir does exist make it
 if not os.path.exists(annotationDir):
     os.makedirs(annotationDir)
     
@@ -53,20 +60,24 @@ infoF=open(infoLstFPath,'w')
 
 # get filename
 for file in allPosFiles:
+
+    # Copy file
     figFile=ntpath.basename(file)
+    copyfile(figFile, posDir+figFile)
+
+    # Write list file
+    annFile=posDir+figFile[:-4]+'.png'
+    infoF.write(annFile[len(currentPath)+6:]+' 1 0 0 49 49')
+    infoF.write('\n')
 
     # Write annotation file
-    annFile=annotationDir+figFile[:-4]+'.txt'
-    annF=open(annFile,'w')
-    annF.write('Image filename : "info/annotations/'+figFile+'"')
-    annF.write('\n')
-    annF.write('Bounding box for object 1 "PASperson" (Xmin, Ymin) - (Xmax, Ymax) : (0, 100) - (0, 100)')
-    annF.close()
-    
-    # Write lst file
-    infoF.write(annFile[len(currentPath):])
-    infoF.write('\n')
-    
+    #annFile = posDir + figFile[:-4] + '.png'
+    # annF=open(annFile,'w')
+    # annF.write('Image filename : "'+'info/pos/'+figFile+'"')
+    # annF.write('\n')
+    # annF.write('Bounding box for object 1 "PASperson" (Xmin, Ymin) - (Xmax, Ymax) : (0, 0) - (49, 49)')
+    # annF.close()
+
 infoF.close()
     
 
