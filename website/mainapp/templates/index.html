@@ -7,7 +7,7 @@
 {% load static %}
 <html>
 	<head>
-		<title>Photon by HTML5 UP</title>
+		<title>{{title}}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -29,17 +29,16 @@
 				  </ul>
 				</div>
 			</section>
-
 		<!-- One -->
-			<section id="one" class="main style1">
+			<section id="one" class="main style2">
 				<div class="container">
 					<div class="row 150%">
 						<div class="6u 12u$(medium)">
 							<header class="major">
-								<h2>Lorem ipsum dolor adipiscing<br />
-								amet dolor consequat</h2>
+								<h2>Geophysics + <br>&nbsp;&nbsp; Machine learning &nbsp;=&nbsp; Win!</h2>
 							</header>
-							<p>Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.</p>
+							<p>With image-processing-inspired Haar cascades, we are able to identify geological features in seismic images. We train our machines with several kinds of synthetic models, which we build in-house.</p>
+                          <p><a href="#three" class="button scrolly">See our library</a></p>
 						</div>
 						<div class="6u$ 12u$(medium) important(medium)">
 							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
@@ -48,49 +47,45 @@
 				</div>
 			</section>
 
-		<!-- Two -->
-			<section id="two" class="main style2">
-				<div class="container">
-					<div class="row 150%">
-						<div class="6u 12u$(medium)">
-							<ul class="major-icons">
-								<li><span class="icon style1 major fa-code"></span></li>
-								<li><span class="icon style2 major fa-bolt"></span></li>
-								<li><span class="icon style3 major fa-camera-retro"></span></li>
-								<li><span class="icon style4 major fa-cog"></span></li>
-								<li><span class="icon style5 major fa-desktop"></span></li>
-								<li><span class="icon style6 major fa-calendar"></span></li>
-							</ul>
-						</div>
-						<div class="6u$ 12u$(medium)">
-							<header class="major">
-								<h2>Lorem ipsum dolor adipiscing<br />
-								amet dolor consequat</h2>
-							</header>
-							<p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
-							<p>Blandit faucibus proin. Ac aliquam integer adipiscing enim non praesent vis commodo nunc phasellus cubilia ac risus accumsan. Accumsan blandit. Lobortis phasellus non lobortis dit varius mi varius accumsan lobortis. Blandit ante aliquam lacinia lorem lobortis semper morbi col faucibus vitae integer placerat accumsan orci eu mi odio tempus adipiscing adipiscing adipiscing curae consequat feugiat etiam dolore.</p>
-							<p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
-						</div>
-					</div>
-				</div>
-			</section>
 
+      
 		<!-- Three -->
 			<section id="three" class="main style1 special">
 				<div class="container">
 					<header class="major">
-						<h2>Adipiscing amet consequat</h2>
+						<h2>Our library</h2>
 					</header>
-					<p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>
+                    <p>You can categorize your images by uploading them to our user-contributed library.</p>
+                      <ul class="actions uniform">
+                      <li>
+                        <form method="post" enctype="multipart/form-data" style="display: inline;">
+                          {% csrf_token %}
+                          <label for="file-upload" class="button special">
+                          Upload
+                          </label>
+                          <input id="file-upload" style="display: none;" type="file" name="myfile" onchange="this.form.submit();" accept=".png">
+                        </form>
+                      </li>
+                  </ul>
+                      
+<!--					<p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>-->
 					<div class="row 150%">
+                    {% for image in images_list %}
 						<div class="4u 12u$(medium)">
-							<span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span>
-							<h3>Magna feugiat lorem</h3>
-							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
+							<span class="image fit"><img style="height:240px;" src="media/{{ image }}" alt="" /></span>
+<!--							<h3>{{image}}</h3>-->
+<!--							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>-->
+<!--
 							<ul class="actions">
 								<li><a href="#" class="button">More</a></li>
 							</ul>
+-->
 						</div>
+                      {% endfor %}
+					</div>
+<!--                  {{images_list}}-->
+
+<!--
 						<div class="4u 12u$(medium)">
 							<span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span>
 							<h3>Magna feugiat lorem</h3>
@@ -107,23 +102,26 @@
 								<li><a href="#" class="button">More</a></li>
 							</ul>
 						</div>
-					</div>
+-->
 				</div>
-			</section>
+			</section>      
+
 
 		<!-- Four -->
-			<section id="four" class="main style2 special">
+<!--
+			<section id="four" class="main style1 special">
 				<div class="container">
 					<header class="major">
-						<h2>Ipsum feugiat consequat?</h2>
+						<h2>Geophysics + Machine learning = Win!</h2>
 					</header>
-					<p>Sed lacus nascetur ac ante amet sapien.</p>
+					<p>With Haar cascades, we are able to identify geological features in seismic images. We train our machines with several kinds of synthetic models, which we build in-house.</p>
 					<ul class="actions uniform">
-						<li><a href="#" class="button special">Sign Up</a></li>
-						<li><a href="#" class="button">Learn More</a></li>
+                    <span class="image fit" style="width: 500px;"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span>
 					</ul>
+                  	<p>Or check out our <a href="#three" class="scrolly">gallery below!</a></p>
 				</div>
 			</section>
+-->
 
 		<!-- Five -->
 		<!--
@@ -455,7 +453,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li>&copy; Carlos Alberto da Costa Filho</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 				</ul>
 			</section>
 
