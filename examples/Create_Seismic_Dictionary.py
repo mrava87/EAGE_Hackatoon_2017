@@ -20,7 +20,7 @@ filename = 'dict'
 os.mkdir(filepath)
 
 
-for imod in range(50):
+for imod in range(75):
 
     if imod<25:
 
@@ -33,7 +33,7 @@ for imod in range(50):
         Layers = GM.LayeredModel({'dims': [100, 100], 'type': 'layer'})
         Layers.Stochastic(nint, dv, drho, dint=dint)
         Layers.Apply()
-    else:
+    elif imod<50:
 
         # Make stochastic dipping models
         vback   = [1500, 1800]
@@ -46,6 +46,19 @@ for imod in range(50):
 
         Layers = GM.DippingModel({'dims': [100, 100], 'type': 'dipping'})
         Layers.Stochastic(nint, p, vback, dv, rhoback, drho, dint=dint, flip=True)
+        Layers.Apply()
+
+    else:
+
+        # Make stochastic wedge models
+        vback   = [1500, 1800]
+        rhoback = [1000, 1200]
+        p       = [0.1, 0.2]
+        dv      = [-400, 400]
+        drho    = [-600, 600]
+
+        Layers = GM.WedgeModel({'dims': [100, 100], 'type': 'dipping'})
+        Layers.Stochastic(p, vback, dv, rhoback, drho, flip=True)
         Layers.Apply()
 
     #Layers.Save(filepath=filepath, filename=filename+str(imod), normV=3000, normRho=3000)
