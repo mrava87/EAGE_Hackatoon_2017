@@ -30,17 +30,19 @@ import os
 import ntpath
 
 # Change to directory containing positive image folder
-os.chdir("/Users/cebirnie/Desktop/machineLearning/imageRec")
+os.chdir("/Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/fault/")
 currentPath=os.getcwd()
 
-positiveFPath=currentPath+'/neg/*'
-annotationDir=currentPath+'/claireInfo/annotations/'
-infoLstFPath=currentPath+'/claireInfo/info.lst'
+positiveFPath=currentPath+'/*_stack.png'
+annotationDir=currentPath+'/info/annotations/'
+infoLstFPath='./info/info.lst'
 
 print currentPath
 
 # Find all positions 
 allPosFiles=glob.glob(positiveFPath)
+print positiveFPath
+print allPosFiles
 
 # If annotations file does exist make it
 if not os.path.exists(annotationDir):
@@ -62,7 +64,7 @@ for file in allPosFiles:
     annF.close()
     
     # Write lst file
-    infoF.write(annFile)
+    infoF.write(annFile[len(currentPath):])
     infoF.write('\n')
     
 infoF.close()
