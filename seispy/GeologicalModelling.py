@@ -276,7 +276,96 @@ class FaultModel(GeologicalModelling):
     Returns: a GeologicalModelling object
 
     """
+    def __init__(self, par):
+        par['type'] = 'fault'
+        GeologicalModelling.__init__(self, par)
+        self.flip = False
 
+    def Stochastic(self, nint, dv, drho=[], dint=[], dfaultlim=[], doffset=[]):
+        """
+        Create fault model given stochastic parametric definition
+        :param nint: 	    Number of intervals
+        :param dint: 	    Range of intervals [intmin,intmax] from which int is uniformly drawn
+        :param dv: 	        Range of velocities [vmin,vmax] from which v is uniformly drawn
+        :param drho: 	    Range of densities  [vmin,vmax] from which rho is uniformly drawn
+        :param doffset: 	Range of offsets  [offsetmin,offsetmax] from which offset is uniformly drawn
+        :param dfaultlim: 	Range of faultlim  [faultlimmin,defaultlimmax] from which faultlim is uniformly drawn
+        """
+
+        if len(dint)==0:
+            dint=[0,self.nz]
+
+        if len(doffset)==0:
+            doffset=[0,self.nz-1]
+
+        if len(dfaultlim)==0:
+            dfaultlim=[0,self.nz-1]
+
+        # IMPORTANT
+        # Probably, I could just use the LayerdModel class here.
+
+        # draw reflector positions
+        nrefl = nint - 1
+        refl  = np.floor(np.random.uniform(dint[0],dint[1],nrefl)) + 1
+        refl  = np.sort(refl)
+
+        self.int       = np.zeros(nint, dtype=np.int8)
+        self.int[0]    = np.int8(refl[0])
+        self.int[1:-1] = np.int8(np.diff(refl))
+        self.int[-1]   = np.int8(self.nz - refl[-1])
+        #print 'sum of ints:',np.sum(self.int)
+
+        # draw velocity and density
+        self.v = np.round(np.random.uniform(dv[0],dv[1],nint))
+        if len(drho) == 0:
+            self.rho = 1000 * np.ones(nint)
+        else:
+            self.rho = np.round(np.random.uniform(drho[0],drho[1],nint))
+
+        #print 'int',self.int
+        #print 'v',self.v
+        #print 'rho',self.rho
+
+        # Make a line with "num" points...
+        x0, z0 = np.floor(np.random.uniform(dfaultlim[0],dfaultlim[1])), 0 # These are in _pixel_ coordinates!!
+#        x1, z1 = np.floor(np.random.uniform(dfaultlim[0],dfaultlim[1])), 99
+
+        #
+        x1, z1 = np.floor(np.random.uniform(x0,dfaultlim[1])), 99
+        self.x, self.z = np.linspace(x0, x1, self.nx, dtype=np.int), np.linspace(z0, z1, self.nz)
+
+        # Offset
+        self.offset = np.int(np.floor(np.random.uniform(doffset[0],doffset[1])))
+
+        return
+
+
+    def Apply(self):
+        """
+        Apply dipping layers modelling
+        """
+
+        v   = self.v[0]  * np.ones(self.int[0])
+        rho = self.rho[0]* np.ones(self.int[0])
+
+        for iint in range(1,len(self.int)):
+            v   = np.hstack((v,   self.v[iint]  * np.ones(self.int[iint])))
+            rho = np.hstack((rho, self.rho[iint]* np.ones(self.int[iint])))
+
+        self.V   = np.repeat(v[:, np.newaxis],   self.nx, axis=1)
+        self.Rho = np.repeat(rho[:, np.newaxis], self.nx, axis=1)
+
+
+        mask0 = np.ones_like(self.V, dtype=np.int)
+        mask1 = np.ones_like(self.V, dtype=np.int)
+        for i in range(self.nz):
+            mask0[i, self.x[i]:] = 0
+
+        mask1 = mask1 - mask0
+
+        self.V = self.V*mask0 + np.roll(self.V, self.offset, 0)*mask1
+
+        return
 
 class WedgeModel(GeologicalModelling):
     """

@@ -20,7 +20,7 @@ filename = 'dict'
 if(os.path.isdir(filepath)==False):
     os.mkdir(filepath)
 
-for imod in range(100):
+for imod in range(125):
 
     if imod<25:
 
@@ -60,6 +60,18 @@ for imod in range(100):
 
         GeoMod = GM.WedgeModel({'dims': [100, 100], 'type': 'dipping'})
         GeoMod.Stochastic(p, vback, dv, rhoback, drho, flip=True)
+        GeoMod.Apply()
+
+    elif imod < 100:
+
+        # Make stochastic fault models
+        dv   = [1500, 2000]
+        drho = [1000, 1800]
+        nint = 3
+        dint = [20, 80]
+
+        GeoMod = GM.FaultModel({'dims': [100, 100], 'type': 'layer'})
+        GeoMod.Stochastic(nint, dv, drho, dint=dint)
         GeoMod.Apply()
 
     else:
