@@ -1,0 +1,18 @@
+#TO DO
+
+- Expand seispy.GeologicalModelling module with classes for:
+	- fault model
+	- trap model
+	- other geological plausible models
+
+
+- Expand Create_Seismic_Dictionary.py code to create negatives from all geological models but one, and positive from remaining one (ideally positive are twice the number of and half of size of negatives)
+
+
+- Download free datasets, http://wiki.seg.org/wiki/Open_data has extensive list and many of those can be retrieved as segy using already available Madagascar Sconstruct
+
+
+- Write wrapper to Train_HaarCascade (either python or shell script)
+
+
+- Work on web page that loads seismic image an detect a specific feature (given availability of pre-trained HaarCascade)
