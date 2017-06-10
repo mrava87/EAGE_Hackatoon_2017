@@ -1,0 +1,6 @@
+[submodule "website/itsnotourfault"]
+	path = website/itsnotourfault
+	url = https://git.heroku.com/itsnotourfault.git
+[submodule "itsnotourfault"]
+	path = itsnotourfault
+	url = https://git.heroku.com/itsnotourfault.git
