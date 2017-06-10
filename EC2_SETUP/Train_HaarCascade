@@ -1,0 +1,19 @@
+cd ../datasets/facerecognition
+
+# Create positive samples
+rm -rf info data positives.vec
+
+
+########
+# BOTTLE
+########
+mkdir info
+opencv_createsamples -img ./pos/1.jpg -bg bg.txt -info info/info.lst -pngoutput info -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -num 1500
+opencv_createsamples -info info/info.lst -num 1500 -w 25 -h 55 -vec positives.vec
+
+
+
+# Train cascade
+mkdir data
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 20 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 300 -numNeg 100 -w 25 -h 55 -mode ALL -precalcValBufSize 200 -precalcIdxBufSize 200
+

@@ -1,0 +1,4 @@
+opencv-python
+Django==1.7.7
+gunicorn==19.7.1
+whitenoise==3.3.0
