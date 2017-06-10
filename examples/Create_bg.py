@@ -18,7 +18,7 @@ models = ['dip','fault','flat','trap','wedge']
 def create_bg(pos_model, basedir=None, n=0):
 
     if basedir==None:
-        basedir=os.curdir()
+        basedir=os.getcwd()
 
     if n==0:
         n=100
