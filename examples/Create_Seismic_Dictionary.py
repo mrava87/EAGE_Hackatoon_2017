@@ -19,6 +19,7 @@ models            = ['flat','dip','wedge','fault','trap']
 nsubmodels        = 1000
 savemod           = False
 norm_seismic      = 6e12
+moddims           = [100, 100]
 
 # create directories
 if not os.path.isdir(filepath):
@@ -45,7 +46,7 @@ for imod in range(nsubmodels_sum):
         nint = 3
         dint = [20, 80]
 
-        GeoMod = GM.LayeredModel({'dims': [100, 100], 'type': 'layer'})
+        GeoMod = GM.LayeredModel({'dims': moddims, 'type': 'layer'})
         GeoMod.Stochastic(nint, dv, drho, dint=dint)
         GeoMod.Apply()
 
@@ -60,7 +61,7 @@ for imod in range(nsubmodels_sum):
         dv      = [-400, 400]
         drho    = [-600, 600]
 
-        GeoMod = GM.DippingModel({'dims': [100, 100], 'type': 'dipping'})
+        GeoMod = GM.DippingModel({'dims': moddims, 'type': 'dipping'})
         GeoMod.Stochastic(nint, p, vback, dv, rhoback, drho, dint=dint, flip=True)
         GeoMod.Apply()
 
@@ -73,7 +74,7 @@ for imod in range(nsubmodels_sum):
         dv      = [-400, 400]
         drho    = [-600, 600]
 
-        GeoMod = GM.WedgeModel({'dims': [100, 100], 'type': 'dipping'})
+        GeoMod = GM.WedgeModel({'dims': moddims, 'type': 'dipping'})
         GeoMod.Stochastic(p, vback, dv, rhoback, drho, flip=True)
         GeoMod.Apply()
 
@@ -85,7 +86,7 @@ for imod in range(nsubmodels_sum):
         nint = 3
         dint = [20, 80]
 
-        GeoMod = GM.FaultModel({'dims': [100, 100], 'type': 'layer'})
+        GeoMod = GM.FaultModel({'dims': moddims, 'type': 'layer'})
         GeoMod.Stochastic(nint, dv, drho, dint=dint)
         GeoMod.Apply()
 
@@ -99,7 +100,7 @@ for imod in range(nsubmodels_sum):
         dv = [1500, 2000]
         drho = [1000, 1800]
 
-        GeoMod = GM.TrapModel({'dims': [100, 100], 'type': 'trap'})
+        GeoMod = GM.TrapModel({'dims': moddims, 'type': 'trap'})
         GeoMod.Stochastic(nint, center_x, dcenter_z, dv, drho, perc=0)
         GeoMod.Apply()
 

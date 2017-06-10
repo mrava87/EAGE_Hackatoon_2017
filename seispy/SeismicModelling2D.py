@@ -101,6 +101,7 @@ class SeismicModelling2D:
         stack_norm = (self.stack/norm + 1.) * (255./2)
         sp.toimage(stack_norm, cmin=0, cmax=255).save(filepath + filename + '_stack.png')
 
+
         # print 'max stack', np.max(self.stack.flatten())
         # print 'min stack', np.min(self.stack.flatten())
 

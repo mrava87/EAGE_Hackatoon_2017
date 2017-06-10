@@ -30,14 +30,20 @@ def create_bg(pos_model, basedir=None, n=0):
     neg_models = [model for model in models if model != pos_model]
 
     # Open file
-    with open('/'.join((basedir,'bg.txt')),'w') as f:
+    with open('/'.join((basedir,pos_model,'bg.txt')),'w') as f:
         for model in neg_models:
             #file_type = 'neg'
-            images = [img for img in os.listdir('/'.join((basedir,model,))) if 'stack' in img]
+            images = [img for img in os.listdir('/'.join((basedir,model,))) if 'stacksub' in img]
             shuffle(images)
             #print images
             for img in images[:n]:
-                line = '/'.join((model,img,))
+                line = '../'+'/'.join((model,img,))
                 f.write(line + '\n')
 
-create_bg('dip', '/home/bfilippo/Work/EAGE_Hackatoon_2017/datasets/seismic/synthetics')
+
+create_bg('dip', n=200)
+create_bg('fault', n=200)
+create_bg('flat', n=200)
+create_bg('trap', n=200)
+create_bg('wedge', n=200)
+
