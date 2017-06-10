@@ -268,6 +268,34 @@ class DippingModel(GeologicalModelling):
 
 
 
+
+class FaultModel(GeologicalModelling):
+    """
+    Class for creating fault model
+
+    Returns: a GeologicalModelling object
+
+    """
+
+
+class WedgeModel(GeologicalModelling):
+    """
+    Class for creating wedge model
+
+    Returns: a GeologicalModelling object
+
+    """
+
+
+class TrapModel(GeologicalModelling):
+    """
+    Class for creating trap model
+
+    Returns: a GeologicalModelling object
+
+    """
+
+
 if __name__ == "__main__":
 
     # Test deterministic method - layered model
