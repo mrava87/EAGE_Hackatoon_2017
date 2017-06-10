@@ -5,24 +5,39 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)
 
-
 import numpy as np
-import matplotlib.pyplot as plt
-import scipy.misc as sp
-
 import seispy.GeologicalModelling as GM
 import seispy.SeismicModelling2D  as SM
 
 
+# directories
 filepath = os.path.join(parentdir, 'datasets/seismic/synthetics/')
 filename = 'dict'
 
-if(os.path.isdir(filepath)==False):
+# model
+models            = ['flat','dip','wedge','fault','trap']
+nsubmodels        = 1000
+savemod           = False
+norm_seismic      = 6e12
+
+# create directories
+if not os.path.isdir(filepath):
     os.mkdir(filepath)
 
-for imod in range(125):
+for model in models:
+    if not os.path.isdir(filepath + model + '/'):
+        os.mkdir(filepath+model+'/')
 
-    if imod<25:
+
+
+# create data
+nsubmodels        = nsubmodels*np.ones(len(models),dtype=np.int)
+nsubmodels_sum    = np.sum(nsubmodels)
+nsubmodels_cumsum = np.cumsum(nsubmodels)
+
+for imod in range(nsubmodels_sum):
+
+    if imod<nsubmodels_cumsum[0]:
 
         # Make stochastic layered models
         dv   = [1500, 2000]
@@ -34,7 +49,7 @@ for imod in range(125):
         GeoMod.Stochastic(nint, dv, drho, dint=dint)
         GeoMod.Apply()
 
-    elif imod<50:
+    elif imod<nsubmodels_cumsum[1]:
 
         # Make stochastic dipping models
         vback   = [1500, 1800]
@@ -49,20 +64,20 @@ for imod in range(125):
         GeoMod.Stochastic(nint, p, vback, dv, rhoback, drho, dint=dint, flip=True)
         GeoMod.Apply()
 
-    elif imod < 75:
+    elif imod<nsubmodels_cumsum[2]:
 
         # Make stochastic wedge models
-        vback = [1500, 1800]
+        vback   = [1500, 1800]
         rhoback = [1000, 1200]
-        p = [0.1, 0.2]
-        dv = [-400, 400]
-        drho = [-600, 600]
+        p       = [0.2, 0.4]
+        dv      = [-400, 400]
+        drho    = [-600, 600]
 
         GeoMod = GM.WedgeModel({'dims': [100, 100], 'type': 'dipping'})
         GeoMod.Stochastic(p, vback, dv, rhoback, drho, flip=True)
         GeoMod.Apply()
 
-    elif imod < 100:
+    elif imod<nsubmodels_cumsum[3]:
 
         # Make stochastic fault models
         dv   = [1500, 2000]
@@ -74,7 +89,7 @@ for imod in range(125):
         GeoMod.Stochastic(nint, dv, drho, dint=dint)
         GeoMod.Apply()
 
-    else:
+    elif imod<nsubmodels_cumsum[4]:
 
         # Make stochastic trap models
         perc = 0
@@ -88,7 +103,6 @@ for imod in range(125):
         GeoMod.Stochastic(nint, center_x, dcenter_z, dv, drho, perc=0)
         GeoMod.Apply()
 
-    GeoMod.Save(filepath=filepath, filename=filename + str(imod), normV=3000, normRho=3000)
 
 
     # Create seismic stack
@@ -102,7 +116,29 @@ for imod in range(125):
     Seismod.Apply()
     #Seismod.Visualize(cbarlims=[-4e12,4e12])
 
-    Seismod.Save(filepath=filepath, filename=filename+str(imod), norm=6e12)
+
+    # Save seismic data in subfolders
+    if imod<nsubmodels_cumsum[0]:
+        if savemod==True: GeoMod.Save( filepath=filepath+models[0]+'/', filename=filename + str(imod), normV=3000, normRho=3000)
+        Seismod.Save(filepath=filepath+models[0]+'/', filename=filename + str(imod), norm=norm_seismic)
+
+    elif imod<nsubmodels_cumsum[1]:
+        if savemod == True: GeoMod.Save( filepath=filepath+models[1]+'/', filename=filename + str(imod), normV=3000, normRho=3000)
+        Seismod.Save(filepath=filepath+models[1]+'/', filename=filename + str(imod), norm=norm_seismic)
+
+    elif imod < nsubmodels_cumsum[2]:
+        if savemod == True: GeoMod.Save( filepath=filepath+models[2]+'/', filename=filename + str(imod), normV=3000, normRho=3000)
+        Seismod.Save(filepath=filepath+models[2]+'/', filename=filename + str(imod), norm=norm_seismic)
+
+    elif imod<nsubmodels_cumsum[3]:
+        if savemod == True: GeoMod.Save( filepath=filepath+models[3]+'/', filename=filename + str(imod), normV=3000, normRho=3000)
+        Seismod.Save(filepath=filepath+models[3]+'/', filename=filename + str(imod), norm=norm_seismic)
+
+    elif imod < nsubmodels_cumsum[4]:
+        if savemod == True: GeoMod.Save( filepath=filepath+models[4]+'/', filename=filename + str(imod), normV=3000, normRho=3000)
+        Seismod.Save(filepath=filepath+models[4]+'/', filename=filename + str(imod), norm=norm_seismic)
+
+
 
     #imgpng = sp.imread(filepath+filename+str(imod)+'_stack.png', flatten=True)
     #plt.figure()
