@@ -3,7 +3,7 @@
 import os,sys,inspect
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
-sys.path.insert(0,parentdir) 
+sys.path.insert(0,parentdir)
 
 
 import numpy as np
@@ -17,10 +17,10 @@ import seispy.SeismicModelling2D  as SM
 filepath = os.path.join(parentdir, 'datasets/seismic/synthetics/')
 filename = 'dict'
 
-os.mkdir(filepath)
+if(os.path.isdir(filepath)==False):
+    os.mkdir(filepath)
 
-
-for imod in range(50):
+for imod in range(100):
 
     if imod<25:
 
@@ -30,10 +30,11 @@ for imod in range(50):
         nint = 3
         dint = [20, 80]
 
-        Layers = GM.LayeredModel({'dims': [100, 100], 'type': 'layer'})
-        Layers.Stochastic(nint, dv, drho, dint=dint)
-        Layers.Apply()
-    else:
+        GeoMod = GM.LayeredModel({'dims': [100, 100], 'type': 'layer'})
+        GeoMod.Stochastic(nint, dv, drho, dint=dint)
+        GeoMod.Apply()
+
+    elif imod<50:
 
         # Make stochastic dipping models
         vback   = [1500, 1800]
@@ -44,16 +45,43 @@ for imod in range(50):
         dv      = [-400, 400]
         drho    = [-600, 600]
 
-        Layers = GM.DippingModel({'dims': [100, 100], 'type': 'dipping'})
-        Layers.Stochastic(nint, p, vback, dv, rhoback, drho, dint=dint, flip=True)
-        Layers.Apply()
+        GeoMod = GM.DippingModel({'dims': [100, 100], 'type': 'dipping'})
+        GeoMod.Stochastic(nint, p, vback, dv, rhoback, drho, dint=dint, flip=True)
+        GeoMod.Apply()
 
-    #Layers.Save(filepath=filepath, filename=filename+str(imod), normV=3000, normRho=3000)
+    elif imod < 75:
+
+        # Make stochastic wedge models
+        vback = [1500, 1800]
+        rhoback = [1000, 1200]
+        p = [0.1, 0.2]
+        dv = [-400, 400]
+        drho = [-600, 600]
+
+        GeoMod = GM.WedgeModel({'dims': [100, 100], 'type': 'dipping'})
+        GeoMod.Stochastic(p, vback, dv, rhoback, drho, flip=True)
+        GeoMod.Apply()
+
+    else:
+
+        # Make stochastic trap models
+        perc = 0
+        nint = 3
+        center_x = 50
+        dcenter_z = [50, 180]
+        dv = [1500, 2000]
+        drho = [1000, 1800]
+
+        GeoMod = GM.TrapModel({'dims': [100, 100], 'type': 'trap'})
+        GeoMod.Stochastic(nint, center_x, dcenter_z, dv, drho, perc=0)
+        GeoMod.Apply()
+
+    GeoMod.Save(filepath=filepath, filename=filename + str(imod), normV=3000, normRho=3000)
 
 
     # Create seismic stack
-    Seismod = SM.SeismicModelling2D({'V'      : Layers.V,
-                                     'Rho'    : Layers.Rho,
+    Seismod = SM.SeismicModelling2D({'V'      : GeoMod.V,
+                                     'Rho'    : GeoMod.Rho,
                                      'dt'     : 0.004,
                                      'ot'     : 0,
                                      'ntrick' : 31,
@@ -61,6 +89,7 @@ for imod in range(50):
 
     Seismod.Apply()
     #Seismod.Visualize(cbarlims=[-4e12,4e12])
+
     Seismod.Save(filepath=filepath, filename=filename+str(imod), norm=6e12)
 
     #imgpng = sp.imread(filepath+filename+str(imod)+'_stack.png', flatten=True)

@@ -37,7 +37,7 @@ class GeologicalModelling:
         """
 
         fig, ax = plt.subplots(1, 2, figsize=figsize)
-        cax = ax[0].imshow(self.V)
+        cax = ax[0].imshow(self.V,cmap='gray')
         ax[0].set_title('V')
         ax[0].axis('tight')
 
@@ -374,6 +374,85 @@ class WedgeModel(GeologicalModelling):
     Returns: a GeologicalModelling object
 
     """
+    def __init__(self, par):
+        par['type'] = 'wedge'
+        GeologicalModelling.__init__(self, par)
+        self.flip = False
+
+    def Stochastic(self, p, vback, dv, rhoback=[1000,1000], drho=np.array([]), flip=True):
+        """
+        Create dipping model given stochastic parametric definition
+        :param p: 	    Slopes (currently single)
+        :param vback: 	    Range of background velocity [vmin    ,vmax]
+        :param dv: 	    Range of velocity changes    [dvmin   ,dvmax]
+        :param rhoback:     Range of background density  [rhomin  ,rhomax]
+        :param drho: 	    Range of density changes     [drhomin ,drhomax]
+        """
+
+	# depth of first layer
+	self.hor_intercept = np.random.randint(0, self.nz)
+
+	# start wedge at
+	self.start_wedge = np.random.randint(0, self.nx)
+
+        # draw dips positions
+        self.dip = np.random.uniform(p[0], p[1])
+
+        # draw velocity and density
+        self.vback = np.round(np.random.uniform(vback[0],vback[1]))
+        self.vback = np.round(np.random.uniform(rhoback[0],rhoback[1]))
+
+        self.dv    = np.round(np.random.uniform(dv[0],dv[1],2))
+
+        if len(drho) == 0:
+            self.drho = 1000 * np.ones(2)
+        else:
+            self.drho = np.round(np.random.uniform(drho[0],drho[1],2))
+
+        self.flip=flip
+
+        #print 'int',self.int
+        #print 'v',self.v
+        #print 'rho',self.rho
+
+        return
+
+
+    def Apply(self):
+        """
+        Apply wedge layers modelling
+        """
+
+        self.V   = self.vback*np.ones((self.nz,self.nx))
+        self.Rho = self.vback*np.ones((self.nz,self.nx))
+
+        V   = np.zeros((self.nz,self.nx))
+        Rho = np.zeros((self.nz,self.nx))
+
+        for ix in range(self.nx):
+
+		if ix < self.start_wedge:
+
+			V[self.hor_intercept:,ix]   = self.dv[1]
+	        	Rho[self.hor_intercept:,ix] = self.drho[1]
+		else:
+
+			dip_intercept = int(np.round(self.hor_intercept + (ix-self.start_wedge)*self.dip))
+			V[self.hor_intercept:dip_intercept,ix] = self.dv[0]
+			V[dip_intercept:,ix] = self.dv[1]
+			Rho[self.hor_intercept:dip_intercept,ix] = self.drho[0]
+			Rho[dip_intercept:,ix] = self.drho[1]
+
+        self.V   = self.V   + V
+        self.Rho = self.Rho + Rho
+
+        if self.flip==True:
+            if(np.random.rand()>0.5):
+                self.V   = np.fliplr(self.V)
+                self.Rho = np.fliplr(self.Rho)
+
+        return
+
 
 
 class TrapModel(GeologicalModelling):
@@ -384,8 +463,118 @@ class TrapModel(GeologicalModelling):
 
     """
 
+    def __init__(self, par):
+        par['type'] = 'trap'
+        GeologicalModelling.__init__(self, par)
+
+
+    def Deterministic(self, center_x, center_z, v, rho=np.array([]), perc = 0):
+        """
+        Create trap model given deterministic parametric definition
+        :param center_x: 	Position of x-center of trap
+        :param center_z: 	Position of z-center(s) of trap
+        :param v: 	        Velocities [above and inside] traps
+        :param rho: 	    Densities [above  and inside] traps
+        :param perc: 	    Percentage of circle to retain in image
+        """
+
+        self.center_x = center_x
+        self.center_z = center_z
+        self.radius   = int(np.floor(self.nx/2*(1+perc)))
+        self.perc = perc
+
+        self.v = v
+        if len(rho) == 0:
+            self.rho = 1000 * np.ones(3)
+        else:
+            self.rho = rho
+
+
+    def Stochastic(self, nint, center_x, dcenter_z, dv, drho=[], perc = 0):
+        """
+        Create layered model given stochastic parametric definition
+        :param nint: 	    Number of intervals
+        :param center_x: 	Position of x-center of trap
+        :param dcenter_z: 	Range of circle centers [cmin,cmax] from which center_z is uniformly drawn
+        :param dv: 	        Range of velocities [vmin,vmax] from which v is uniformly drawn
+        :param drho: 	    Range of densities  [vmin,vmax] from which v is uniformly drawn
+        """
+
+        self.center_x = center_x
+        self.radius = int(np.floor(self.nx / 2 * (1 + perc)))
+        self.perc = perc
+
+        # draw center_z positions
+        center_z = np.floor(np.random.uniform(dcenter_z[0], dcenter_z[1], nint)) + 1
+        self.center_z = np.sort(center_z)
+
+        # draw velocity and density
+        self.v = np.round(np.random.uniform(dv[0], dv[1], nint+1))
+        if len(drho) == 0:
+            self.rho = 1000 * np.ones(nint)
+        else:
+            self.rho = np.round(np.random.uniform(drho[0], drho[1], nint+1))
+
+        # print 'int',self.int
+        # print 'v',self.v
+        # print 'rho',self.rho
+
+        return
+
+
+    def Apply(self):
+        """
+        Apply trap modelling
+        """
+        self.V   = np.zeros([self.nz,self.nx+int(self.nx*self.perc)])
+        self.Rho = np.zeros([self.nz,self.nx+int(self.nx*self.perc)])
+
+        # above trap
+        #self.V  [:self.center_x,:]=self.v[0]
+        #self.Rho[:self.center_x, :] = self.rho[0]
+
+        self.V[:,:]   = self.v[0]
+        self.Rho[:,:] = self.rho[0]
+
+        # create trap(s)
+        x_test = range(self.center_x-self.radius,self.center_x+self.radius)
+        y_test = np.zeros((len(self.center_z), 2 * self.radius))
+
+        for itrap in range(len(self.center_z)):
+
+            for ix in range(self.center_x-self.radius,self.center_x+self.radius):
+                y = np.roots([1,-2*self.center_z[itrap],self.center_z[itrap]**2+(ix-self.center_x)**2-self.radius**2])[1]
+                if np.imag(y) !=0:
+                    y= np.real(y)
+                if y<0:
+                    y=0
+                y_test[itrap, ix - self.center_x-self.radius] = y
+
+                self.V  [int(y):,ix] = self.v[itrap + 1]
+                self.Rho[int(y):,ix] = self.rho[itrap + 1]
+
+        #plt.figure()
+        #plt.plot(y_test.T)
+        #plt.gca().invert_yaxis()
+
+        # cat external areas
+        if (np.mod(self.nx,2)==0):
+            self.V   = self.V[:,self.center_x-self.nx/2:self.center_x+self.nx/2]
+            self.Rho = self.Rho[:,self.center_x-self.nx/2:self.center_x+self.nx/2]
+        else:
+            self.V   = self.V  [:,(self.center_x-(self.nx-1)/2):(self.center_x+(self.nx-1)/2+1)]
+            self.Rho = self.Rho[:,(self.center_x-(self.nx-1)/2):(self.center_x+(self.nx-1)/2+1)]
+
+        #print self.V.shape
+        #print self.Rho.shape
+
+
+
 
 if __name__ == "__main__":
+
+    filepath = '../datasets/seismic/synthetics/'
+
 
     # Test deterministic method - layered model
     ints = np.array([10, 20, 50, 10])
@@ -398,9 +587,7 @@ if __name__ == "__main__":
 
     Layers.Visualize(figsize=(12, 7))
 
-    filepath='/Users/matteoravasi/PycharmProjects/Seismic_Recognition/datasets/synthetics/'
     filename='layer'
-
     Layers.Save(filepath=filepath, filename=filename)
 
 
@@ -414,9 +601,7 @@ if __name__ == "__main__":
 
     Layers.Visualize(figsize=(12, 7))
 
-    filepath = '/Users/matteoravasi/PycharmProjects/Seismic_Recognition/datasets/seismic/synthetics/'
     filename = 'layerrdn'
-
     Layers.Save(filepath=filepath, filename=filename)
 
 
@@ -449,5 +634,33 @@ if __name__ == "__main__":
     Layers.Apply()
 
     Layers.Visualize(figsize=(12, 7))
+
+
+    # Test deterministic method - trap model
+    perc = 0
+    center_x = 50
+    center_z = np.array([50, 70, 90, 110])
+    v = np.array([1500, 2000, 1500, 1800, 2000])
+    rho = np.array([1000, 1200, 1400, 1500, 1700])
+
+    Trap = TrapModel({'dims': [100, 100], 'type': 'trap'})
+    Trap.Deterministic(center_x, center_z, v, rho, perc)
+    Trap.Apply()
+    Trap.Visualize(figsize=(12, 7))
+
+    # Test stochastic method - trap model
+    perc = 0
+    nint = 3
+    center_x = 50
+    dcenter_z = [20, 80]
+    dv = [1500, 2000]
+    drho = [1000, 1800]
+
+    Trap = TrapModel({'dims': [100, 100], 'type': 'trap'})
+    Trap.Stochastic(nint, center_x, dcenter_z, dv, drho, perc=0)
+    Trap.Apply()
+
+    Trap.Visualize(figsize=(12, 7))
+
 
 plt.show()
