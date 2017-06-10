@@ -11,7 +11,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="{% static 'mainapp/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'mainapp/assets/css/main2.css' %}" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
@@ -20,14 +20,13 @@
 		<!-- Header -->
 			<section id="header">
 				<div class="inner">
-					<span class="icon major fa-cloud"></span>
-					<h1>Hi, I'm <strong>Photon</strong>, another fine<br />
-					little freebie from <a href="http://html5up.net">HTML5 UP</a>.</h1>
-					<p>Accumsan feugiat mi commodo erat lorem ipsum, sed magna<br />
-					lobortis feugiat sapien sed etiam volutpat accumsan.</p>
-					<ul class="actions">
-						<li><a href="#one" class="button scrolly">Discover</a></li>
-					</ul>
+					<!-- <span class="icon major fa-cloud"></span> -->
+                  <h1>We are</h1>
+                  <p><span class="image"><img align="middle" style="width:600px;"src="{% static 'mainapp/images/logo.png' %}" /></span></p>
+				  <p>Geological seismic feature recognition using machine learning.</p>
+				  <ul class="actions">
+				    <li><a href="#one" class="button scrolly">Discover</a></li>
+				  </ul>
 				</div>
 			</section>
 
@@ -85,7 +84,7 @@
 					<p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>
 					<div class="row 150%">
 						<div class="4u 12u$(medium)">
-							<span class="image fit"><img src="images/pic02.jpg" alt="" /></span>
+							<span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span>
 							<h3>Magna feugiat lorem</h3>
 							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
 							<ul class="actions">
@@ -93,7 +92,7 @@
 							</ul>
 						</div>
 						<div class="4u 12u$(medium)">
-							<span class="image fit"><img src="images/pic03.jpg" alt="" /></span>
+							<span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span>
 							<h3>Magna feugiat lorem</h3>
 							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
 							<ul class="actions">
@@ -101,7 +100,7 @@
 							</ul>
 						</div>
 						<div class="4u$ 12u$(medium)">
-							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+							<span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span>
 							<h3>Magna feugiat lorem</h3>
 							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
 							<ul class="actions">
@@ -461,12 +460,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</section>
 
 		<!-- Scripts -->
-			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
-			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
-			<script src="{% static 'assets/js/skel.min.js' %}"></script>
-			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/util.js' %}"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="{% static 'assets/js/main.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/main.js' %}"></script>
 
 	</body>
 </html>
