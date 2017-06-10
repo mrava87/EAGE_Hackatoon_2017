@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 # Import and visualize real data
 
 import segyio

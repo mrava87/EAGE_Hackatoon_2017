@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 # Face recognition example from https://www.youtube.com/watch?v=88HdqNDQsEk
 # and https://pythonprogramming.net/haar-cascade-face-eye-detection-python-opencv-tutorial/
 #

@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 # Face recognition in seismic image
 #
 # Authors: C. Birnie, M. Ravasi
