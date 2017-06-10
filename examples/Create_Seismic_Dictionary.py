@@ -1,7 +1,10 @@
 #!/usr/bin/env python2.7
 # Create dictionary of seismic synthetics
-import os, sys
-sys.path.append(os.path.abspath('..'))
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir) 
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,8 +14,7 @@ import seispy.GeologicalModelling as GM
 import seispy.SeismicModelling2D  as SM
 
 
-
-filepath = './datasets/seismic/synthetics/'
+filepath = os.path.join(parentdir, 'datasets/seismic/synthetics/')
 filename = 'dict'
 
 
