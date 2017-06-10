@@ -17,6 +17,8 @@ import seispy.SeismicModelling2D  as SM
 filepath = os.path.join(parentdir, 'datasets/seismic/synthetics/')
 filename = 'dict'
 
+os.mkdir(filepath)
+
 
 for imod in range(50):
 
