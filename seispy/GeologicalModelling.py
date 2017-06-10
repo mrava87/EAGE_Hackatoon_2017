@@ -56,10 +56,10 @@ class GeologicalModelling:
         """
 
         V = (self.V / normV) * (255.)
-        sp.toimage(V, cmin=0, cmax=255).save(filepath + filename + 'V.png')
+        sp.toimage(V, cmin=0, cmax=255).save(filepath + filename + '_V.png')
 
         Rho = (self.Rho / normRho) * (255.)
-        sp.toimage(Rho, cmin=0, cmax=255).save(filepath + filename + 'Rho.png')
+        sp.toimage(Rho, cmin=0, cmax=255).save(filepath + filename + '_Rho.png')
 
         return
 
@@ -390,10 +390,10 @@ class WedgeModel(GeologicalModelling):
         """
 
 	# depth of first layer
-	self.hor_intercept = np.random.randint(0, self.nz)
+	self.hor_intercept = np.random.randint(np.round(0.2*self.nz), np.round(0.8*self.nz))
 
 	# start wedge at
-	self.start_wedge = np.random.randint(0, self.nx)
+	self.start_wedge = np.random.randint(0, np.round(self.nx/2))
 
         # draw dips positions
         self.dip = np.random.uniform(p[0], p[1])

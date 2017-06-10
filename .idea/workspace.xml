@@ -1,7 +1,311 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9378e00e-4f2e-4f40-8832-6ee99243ac25" name="Default" comment="" />
+    <list default="true" id="9378e00e-4f2e-4f40-8832-6ee99243ac25" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict0Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict0V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict0_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict10Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict10V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict10_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict11Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict11V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict11_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict12Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict12V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict12_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict13Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict13V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict13_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict14Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict14V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict14_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict15Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict15V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict15_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict16Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict16V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict16_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict17Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict17V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict17_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict18Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict18V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict18_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict19Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict19V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict19_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict1Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict1V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict1_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict20Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict20V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict20_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict21Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict21V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict21_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict22Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict22V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict22_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict23Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict23V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict23_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict24Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict24V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict24_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict25Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict25V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict25_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict26Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict26V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict26_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict27Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict27V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict27_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict28Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict28V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict28_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict29Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict29V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict29_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict2Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict2V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict2_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict30Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict30V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict30_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict31Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict31V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict31_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict32Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict32V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict32_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict33Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict33V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict33_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict34Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict34V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict34_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict35Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict35V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict35_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict36Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict36V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict36_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict37Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict37V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict37_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict38Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict38V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict38_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict39Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict39V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict39_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict3Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict3V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict3_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict40Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict40V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict40_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict41Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict41V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict41_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict42Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict42V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict42_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict43Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict43V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict43_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict44Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict44V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict44_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict45Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict45V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict45_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict46Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict46V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict46_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict47Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict47V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict47_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict48Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict48V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict48_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict49Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict49V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict49_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict4Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict4V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict4_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict50Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict50V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict50_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict51Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict51V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict51_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict52Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict52V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict52_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict53Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict53V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict53_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict54Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict54V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict54_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict55Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict55V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict55_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict56Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict56V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict56_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict57Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict57V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict57_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict58Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict58V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict58_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict59Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict59V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict59_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict5Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict5V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict5_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict60Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict60V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict60_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict61Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict61V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict61_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict62Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict62V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict62_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict63Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict63V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict63_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict64Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict64V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict64_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict65Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict65V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict65_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict66Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict66V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict66_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict67Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict67V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict67_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict68Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict68V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict68_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict69Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict69V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict69_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict6Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict6V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict6_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict70Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict70V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict70_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict71Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict71V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict71_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict72Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict72V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict72_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict73Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict73V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict73_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict74Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict74V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict74_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict75Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict75V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict75_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict76Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict76V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict76_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict77Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict77V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict77_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict78Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict78V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict78_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict79Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict79V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict79_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict7Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict7V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict7_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict80Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict80V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict80_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict81Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict81V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict81_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict82Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict82V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict82_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict83Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict83V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict83_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict84Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict84V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict84_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict85Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict85V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict85_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict86Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict86V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict86_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict87Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict87V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict87_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict88Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict88V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict88_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict89Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict89V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict89_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict8Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict8V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict8_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict90Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict90V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict90_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict91Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict91V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict91_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict92Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict92V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict92_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict93Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict93V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict93_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict94Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict94V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict94_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict95Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict95V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict95_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict96Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict96V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict96_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict97Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict97V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict97_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict98Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict98V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict98_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict99Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict99V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict99_stack.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict9Rho.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict9V.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/seismic/synthetics/dict9_stack.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/Create_Seismic_Dictionary.py" afterPath="$PROJECT_DIR$/examples/Create_Seismic_Dictionary.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seispy/GeologicalModelling.py" afterPath="$PROJECT_DIR$/seispy/GeologicalModelling.py" />
+    </list>
     <ignored path="EAGE_Hackatoon_2017.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +335,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeologicalModelling.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Face_Eye_detection.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/Face_Eye_detection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#250#260#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeologicalModelling.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/seispy/GeologicalModelling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret line="540" column="24" selection-start-line="540" selection-start-column="24" selection-end-line="540" selection-end-column="24" />
+            <state relative-caret-position="118">
+              <caret line="531" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="666" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -43,11 +359,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Create_Seismic_Dictionary.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Create_Seismic_Dictionary.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/Create_Seismic_Dictionary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-465">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Face_Eye_HaarCreation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/Face_Eye_HaarCreation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-757">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Train_HaarCascade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/Train_HaarCascade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -172,6 +508,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="datasets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="facerecognition" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -388,8 +728,8 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328877" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328877" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3302139" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -494,6 +834,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/Face_Eye_detection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -504,29 +852,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/examples/Train_HaarCascade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/Face_Eye_HaarCreation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-757">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/Create_Seismic_Dictionary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/seispy/GeologicalModelling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="540" column="24" selection-start-line="540" selection-start-column="24" selection-end-line="540" selection-end-column="24" />
+        <state relative-caret-position="118">
+          <caret line="531" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="666" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/Create_Seismic_Dictionary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-465">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
