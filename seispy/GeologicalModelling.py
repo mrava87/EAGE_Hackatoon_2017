@@ -37,7 +37,7 @@ class GeologicalModelling:
         """
 
         fig, ax = plt.subplots(1, 2, figsize=figsize)
-        cax = ax[0].imshow(self.V)
+        cax = ax[0].imshow(self.V,cmap='gray')
         ax[0].set_title('V')
         ax[0].axis('tight')
 
@@ -285,6 +285,84 @@ class WedgeModel(GeologicalModelling):
     Returns: a GeologicalModelling object
 
     """
+    def __init__(self, par):
+        par['type'] = 'wedge'
+        GeologicalModelling.__init__(self, par)
+        self.flip = False
+
+    def Stochastic(self, p, vback, dv, rhoback=[1000,1000], drho=np.array([]), flip=True):
+        """
+        Create dipping model given stochastic parametric definition
+        :param p: 	    Slopes (currently single)
+        :param vback: 	    Range of background velocity [vmin    ,vmax]
+        :param dv: 	    Range of velocity changes    [dvmin   ,dvmax]
+        :param rhoback:     Range of background density  [rhomin  ,rhomax]
+        :param drho: 	    Range of density changes     [drhomin ,drhomax]
+        """
+
+	# depth of first layer
+	self.hor_intercept = np.random.randint(0, self.nz)
+
+	# start wedge at
+	self.start_wedge = np.random.randint(0, self.nx)
+
+        # draw dips positions
+        self.dip = np.random.uniform(p[0], p[1])	
+
+        # draw velocity and density
+        self.vback = np.round(np.random.uniform(vback[0],vback[1]))
+        self.vback = np.round(np.random.uniform(rhoback[0],rhoback[1]))
+
+        self.dv    = np.round(np.random.uniform(dv[0],dv[1],2))
+
+        if len(drho) == 0:
+            self.drho = 1000 * np.ones(2)
+        else:
+            self.drho = np.round(np.random.uniform(drho[0],drho[1],2))
+
+        self.flip=flip
+
+        #print 'int',self.int
+        #print 'v',self.v
+        #print 'rho',self.rho
+
+        return
+
+
+    def Apply(self):
+        """
+        Apply wedge layers modelling
+        """
+
+        self.V   = self.vback*np.ones((self.nz,self.nx))
+        self.Rho = self.vback*np.ones((self.nz,self.nx))
+
+        V   = np.zeros((self.nz,self.nx))
+        Rho = np.zeros((self.nz,self.nx))
+
+        for ix in range(self.nx):
+
+		if ix < self.start_wedge:
+			
+			V[self.hor_intercept:,ix]   = self.dv[1]
+	        	Rho[self.hor_intercept:,ix] = self.drho[1]
+		else:
+		
+			dip_intercept = int(np.round(self.hor_intercept + (ix-self.start_wedge)*self.dip))
+			V[self.hor_intercept:dip_intercept,ix] = self.dv[0]
+			V[dip_intercept:,ix] = self.dv[1]
+			Rho[self.hor_intercept:dip_intercept,ix] = self.drho[0]
+			Rho[dip_intercept:,ix] = self.drho[1]
+
+        self.V   = self.V   + V
+        self.Rho = self.Rho + Rho
+
+        if self.flip==True:
+            if(np.random.rand()>0.5):
+                self.V   = np.fliplr(self.V)
+                self.Rho = np.fliplr(self.Rho)
+
+        return
 
 
 class TrapModel(GeologicalModelling):
