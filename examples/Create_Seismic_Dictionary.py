@@ -1,4 +1,7 @@
+#!/usr/bin/env python2.7
 # Create dictionary of seismic synthetics
+import os, sys
+sys.path.append(os.path.abspath('..'))
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,7 +12,7 @@ import seispy.SeismicModelling2D  as SM
 
 
 
-filepath = '/Users/matteoravasi/PycharmProjects/Seismic_Recognition/datasets/seismic/synthetics/'
+filepath = './datasets/seismic/synthetics/'
 filename = 'dict'
 
 
