@@ -67,7 +67,7 @@ for file in allPosFiles:
 
     # Write list file
     annFile=posDir+figFile[:-4]+'.png'
-        infoF.write(annFile[len(currentPath)+6:]+' 1 0 0 49 49')
+    infoF.write(annFile[len(currentPath)+6:]+' 1 0 0 49 49')
     infoF.write('\n')
 
     # Write annotation file
@@ -77,7 +77,7 @@ for file in allPosFiles:
     # annF.write('\n')
     # annF.write('Bounding box for object 1 "PASperson" (Xmin, Ymin) - (Xmax, Ymax) : (0, 0) - (49, 49)')
     # annF.close()
-    
+
 infoF.close()
     
 
