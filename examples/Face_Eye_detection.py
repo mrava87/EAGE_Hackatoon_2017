@@ -54,6 +54,7 @@ cap.release()
 cv2.destroyAllWindows()
 """
 
+
 while True:
     ret,img=cap.read()
     img_raw = np.copy(img)
