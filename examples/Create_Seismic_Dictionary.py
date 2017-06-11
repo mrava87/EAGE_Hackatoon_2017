@@ -93,11 +93,13 @@ def Create_Seismic_Dictionary(directory = 'datasets/seismic/synthetics/', models
             print('fault ' + str(imod))
             dv   = [1500, 2000]
             drho = [1000, 1800]
+            dfaultlim = [30, 70]
             nint = 3
             dint = [20, 80]
+            doffset = [10,30]
 
             GeoMod = GM.FaultModel({'dims': moddims, 'type': 'layer'})
-            GeoMod.Stochastic(nint, dv, drho, dint=dint)
+            GeoMod.Stochastic(nint, dv, drho, dint=dint, dfaultlim=dfaultlim, doffset=doffset)
             GeoMod.Apply()
 
         elif imod<nsubmodels_cumsum[4]:

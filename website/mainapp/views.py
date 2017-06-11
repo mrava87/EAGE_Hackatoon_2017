@@ -4,7 +4,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.text import slugify
 
 import os, glob
-from detectfaces import detectfaces
+from detect import detectfaces, detectfeatures
 
 def get_images_list(directory):
     files = glob.glob(directory + '/*.jpg')
@@ -17,10 +17,15 @@ class IndexView(TemplateView):
     template_name = 'index.html'
     title = "It's not our FAULT!"
 
+    casc_dict = {'fault': False, 'trap': False, 'face': False, 'bottle': False}
+    uploaded_file_url = ''
+
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['title'] = self.title
 
+        for key, value in self.casc_dict.iteritems():
+            context[key] = value
         context['images_loc'] = FileSystemStorage().location
         context['images_list'] = get_images_list(context['images_loc'])
         return context
@@ -40,7 +45,18 @@ class IndexView(TemplateView):
             context['images_loc'] = fs.location
             context['images_list'] = get_images_list(context['images_loc'])
 
-            result_file_url = detectfaces(uploaded_file_url)
-            context['result_file_url'] = result_file_url
+        cascades = ['fault', 'trap', 'face', 'bottle']
+        for c in cascades:
+            if request.POST.get(c):
+                self.casc_dict[c] = True
+            else:
+                self.casc_dict[c] = False
+        print self.casc_dict
 
+        result_file_url = detectfeatures(uploaded_file_url,self.casc_dict)
+	context['result_file_url'] = result_file_url
+	
+
+        for key, value in self.casc_dict.iteritems():
+            context[key] = value
         return super(TemplateView, self).render_to_response(context)

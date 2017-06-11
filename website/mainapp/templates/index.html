@@ -61,6 +61,19 @@
 					<div class="row 150%">
                       	<div class="4u 12u$(medium)">
 							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
+                            <div class="row uniform 50%">
+                              <div class="6u 12u$(xsmall)">
+                                <form method="post" enctype="multipart/form-data" style="display: inline;">
+                                  {% csrf_token %}
+                                  <label for="file-upload" class="button special">
+                                  Upload
+                                  </label>
+                                  <input id="file-upload" style="display: none;" type="file" name="myfile" onchange="this.form.submit();" accept=".png">
+                                </form>
+                              </div>
+                             <div class="6u$ 12u$(xsmall)">
+                              </div>
+                          </div>
 						</div>
 						<div class="8u$ 12u$(medium)  important(medium)">
 							<header class="major">
@@ -68,21 +81,23 @@
 							</header>
 							<p>Explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation.</p>
                             <h3>Cascade</h3>
+                            <form method="post" action="#two">
+                            {% csrf_token %}
 							<div class="row uniform 50%">
 								<div class="3u 12u$(xsmall)">
-                          			<input type="checkbox" id="fault" name="fault">
+                          			<input type="checkbox" id="fault" name="fault" {% if fault %} checked {% endif %}>
 									<label for="fault">Fault</label>
 								</div>
 								<div class="3u 12u$(xsmall)">
-                          			<input type="checkbox" id="trap" name="trap">
+                          			<input type="checkbox" id="trap" name="trap"  {% if trap %} checked {% endif %}>
 									<label for="trap">Trap</label>
 								</div>
 								<div class="3u 12u$(xsmall)">
-                          			<input type="checkbox" id="face" name="face">
+                          			<input type="checkbox" id="face" name="face"  {% if face %} checked {% endif %}>
 									<label for="face">Face</label>
 								</div>
 								<div class="3u$ 12u$(xsmall)">
-                          			<input type="checkbox" id="bottle" name="bottle">
+                          			<input type="checkbox" id="bottle" name="bottle" {% if bottle %} checked {% endif %}>
 									<label for="bottle">Bottle</label>
 								</div>
                           </div>
@@ -113,10 +128,14 @@
                                     <em id="slider-min-val" style="font-style: normal;">100</em>
                                     <label for="slider-max">Maximum size</label>
 								</div>
-                          </div>                          
+                          </div>
+                              <input type="submit" value="Detect" class="special" />
+                              <input type="reset" value="Reset" />
+                            </form>
                           <br><br><br>
                           <p style="text-align: justify;"><a href="#three" class="button scrolly">See our library</a></p>
 						</div>
+
 					</div>
 				</div>
 			</section>
@@ -438,6 +457,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<section>
 						<h4>Form</h4>
 						<form method="post" action="#">
+                                                            {% csrf_token %}
+
 							<div class="row uniform 50%">
 								<div class="6u 12u$(xsmall)">
 									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
