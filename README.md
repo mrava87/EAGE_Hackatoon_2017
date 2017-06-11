@@ -4,7 +4,7 @@
 This is the result of the Agile 2017 Paris Hackathon, a weekend of coding among friends with geophysical and computational skills.
 
 ## Scope of Project
-We aim to help seismic interpreters in detecting features of interest within seismic data using Machine Learning techiniques.
+We aim to help seismic interpreters in detecting features of interest within seismic data using Machine Learning techniques.
 
 Haar Cascade classifiers are commonly used to identify faces or object in photos or video streams. We have adopted such an approach
 for seismic data by taking advantage of [OpenCV library](http://opencv.org) routines.
