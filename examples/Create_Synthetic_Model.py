@@ -69,6 +69,10 @@ plt.colorbar()
 Fake = np.concatenate((Layers0.V, Fault0.V, Layers0.V), axis=0)
 Fake[270:370, 600:700] = Fake[270:370, 600:700] + Trap0.V
 Fake[400:500, 650:750] = Fake[400:500, 650:750] + Trap0.V
+Fake[100:200, 650:750] = Fake[100:200, 650:750] + Trap0.V
+Fake[200:300, 150:250] = Fake[200:300, 150:250] + Trap0.V
+Fake[350:450, 250:350] = Fake[350:450, 250:350] + Trap0.V
+Fake[300:400, 750:850] = Fake[300:400, 750:850] + Trap0.V
 #Fake[300:400, 600:700] = Trap0.V
 
 plt.figure(figsize=(12, 7))
