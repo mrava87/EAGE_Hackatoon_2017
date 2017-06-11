@@ -17,6 +17,8 @@ class IndexView(TemplateView):
     template_name = 'index.html'
     title = "It's not our FAULT!"
 
+    casc_dict = {}
+
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['title'] = self.title
@@ -42,5 +44,14 @@ class IndexView(TemplateView):
 
             result_file_url = detectfaces(uploaded_file_url)
             context['result_file_url'] = result_file_url
+
+        cascades = ['fault', 'trap', 'face', 'bottle']
+        for c in cascades:
+            if request.POST.get(c):
+                self.casc_dict[c] = True
+            else:
+                self.casc_dict[c] = False
+        print self.casc_dict
+
 
         return super(TemplateView, self).render_to_response(context)
