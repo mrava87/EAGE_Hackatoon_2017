@@ -586,12 +586,13 @@ class TrapModel(GeologicalModelling):
         #plt.gca().invert_yaxis()
 
         # cat external areas
-        if (np.mod(self.nx,2)==0):
-            self.V   = self.V[:,self.center_x-self.nx/2:self.center_x+self.nx/2]
-            self.Rho = self.Rho[:,self.center_x-self.nx/2:self.center_x+self.nx/2]
-        else:
-            self.V   = self.V  [:,(self.center_x-(self.nx-1)/2):(self.center_x+(self.nx-1)/2+1)]
-            self.Rho = self.Rho[:,(self.center_x-(self.nx-1)/2):(self.center_x+(self.nx-1)/2+1)]
+        if self.perc > 0:
+            if (np.mod(self.nx,2)==0):
+                self.V   = self.V[:,self.center_x-self.nx/2:self.center_x+self.nx/2]
+                self.Rho = self.Rho[:,self.center_x-self.nx/2:self.center_x+self.nx/2]
+            else:
+                self.V   = self.V  [:,(self.center_x-(self.nx-1)/2):(self.center_x+(self.nx-1)/2+1)]
+                self.Rho = self.Rho[:,(self.center_x-(self.nx-1)/2):(self.center_x+(self.nx-1)/2+1)]
 
         #print self.V.shape
         #print self.Rho.shape
