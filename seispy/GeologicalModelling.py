@@ -110,10 +110,10 @@ class LayeredModel(GeologicalModelling):
         refl  = np.floor(np.random.uniform(dint[0],dint[1],nrefl)) + 1
         refl  = np.sort(refl)
 
-        self.int       = np.zeros(nint, dtype=np.int8)
-        self.int[0]    = np.int8(refl[0])
-        self.int[1:-1] = np.int8(np.diff(refl))
-        self.int[-1]   = np.int8(self.nz - refl[-1])
+        self.int       = np.zeros(nint, dtype=np.int)
+        self.int[0]    = np.int(refl[0])
+        self.int[1:-1] = np.int(np.diff(refl))
+        self.int[-1]   = np.int(self.nz - refl[-1])
         #print 'sum of ints:',np.sum(self.int)
 
         # draw velocity and density
@@ -206,10 +206,10 @@ class DippingModel(GeologicalModelling):
         refl  = np.floor(np.random.uniform(dint[0],dint[1],nrefl)) + 1
         refl  = np.sort(refl)
 
-        self.int       = np.zeros(nint, dtype=np.int8)
-        self.int[0]    = np.int8(refl[0])
-        self.int[1:-1] = np.int8(np.diff(refl))
-        self.int[-1]   = np.int8(self.nz - refl[-1])
+        self.int       = np.zeros(nint, dtype=np.int)
+        self.int[0]    = np.int(refl[0])
+        self.int[1:-1] = np.int(np.diff(refl))
+        self.int[-1]   = np.int(self.nz - refl[-1])
         #print 'sum of ints:',np.sum(self.int)
 
         # draw dips positions
@@ -281,6 +281,34 @@ class FaultModel(GeologicalModelling):
         GeologicalModelling.__init__(self, par)
         self.flip = False
 
+    def Deterministic(self, ints, v, rho=np.array([]), faultlim=np.array([]), offset=1):
+        """
+        Create layered model given deterministic parametric definition
+        :param ints: 	    Size of intervals
+        :param v: 	        Velocity of intervals
+        :param rho: 	    Density of intervals
+        """
+
+        self.int = ints
+        self.v   = v
+        if len(rho)==0:
+            self.rho = 1000*np.ones(len(self.int))
+        else:
+            self.rho = rho
+
+        if len(rho)==0:
+            self.faultlim = np.array((0, self.nx-1))
+        else:
+            self.faultlim = faultlim
+
+        self.offset = offset
+
+        x0, z0 = faultlim[0], 0 # These are in _pixel_ coordinates!!
+
+        #
+        x1, z1 = faultlim[1], self.nz-1
+        self.x, self.z = np.linspace(x0, x1, self.nx, dtype=np.int), np.linspace(z0, z1, self.nz)
+
     def Stochastic(self, nint, dv, drho=[], dint=[], dfaultlim=[], doffset=[]):
         """
         Create fault model given stochastic parametric definition
@@ -299,20 +327,20 @@ class FaultModel(GeologicalModelling):
             doffset=[0,self.nz-1]
 
         if len(dfaultlim)==0:
-            dfaultlim=[0,self.nz-1]
+            dfaultlim=[0,self.nx-1]
 
         # IMPORTANT
         # Probably, I could just use the LayerdModel class here.
 
         # draw reflector positions
         nrefl = nint - 1
-        refl  = np.floor(np.random.uniform(dint[0],dint[1],nrefl)) + 1
+        refl  = np.random.randint(dint[0],dint[1],nrefl) + 1
         refl  = np.sort(refl)
 
-        self.int       = np.zeros(nint, dtype=np.int8)
-        self.int[0]    = np.int8(refl[0])
-        self.int[1:-1] = np.int8(np.diff(refl))
-        self.int[-1]   = np.int8(self.nz - refl[-1])
+        self.int       = np.zeros(nint, dtype=np.int)
+        self.int[0]    = refl[0]
+        self.int[1:-1] = np.diff(refl)
+        self.int[-1]   = self.nz - refl[-1]
         #print 'sum of ints:',np.sum(self.int)
 
         # draw velocity and density

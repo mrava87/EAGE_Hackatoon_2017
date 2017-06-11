@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 
-# Fault recognition in seismic image
+# Fault recognition in seismic image - to be run inside examples folder
 #
 # Authors: C. Birnie, M. Ravasi
 
@@ -16,6 +16,7 @@ imgnames     = ['imagetest_withtrap.png']
 for imgname in imgnames:
 
     img=cv2.imread('../datasets/seismic/synthetics/targets/'+imgname,1)
+
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     gray = cv2.equalizeHist(gray)
 
