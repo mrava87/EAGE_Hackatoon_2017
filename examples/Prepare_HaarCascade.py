@@ -8,23 +8,25 @@ from Create_bg import create_bg
 from makeInfoLst import makeInfoLst
 
 models     = ['flat','dip','wedge','fault','trap']
-models_dir = '/datasets/seismic/synthetics/'
+models_dir = '/datasets/seismic/synthetics_test/'
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
 
 # Choose steps to run
-Create_Seismic_flag = False
-Preprocessing_flag  = False
+Create_Seismic_flag = True
+Preprocessing_flag  = True
 Create_bg_flag      = True
-Create_list_flag    = False
+Create_list_flag    = True
 
 
 
 # Make seismic data
 if Create_Seismic_flag: Create_Seismic_Dictionary(directory  = os.path.dirname(currentdir)+models_dir, \
                               					  models     = models, \
-                            					  nsubmodels = 10, moddims = [100, 100], norm_seismic = 6e12)
+                            					  nsubmodels = 5000, \
+												  moddims    = [100, 100], \
+                                                  norm_seismic = 6e12)
 
 # Preprocess data for image recognition
 if Preprocessing_flag: preprocessing(models=models, basedir=os.path.dirname(currentdir)+models_dir, size=(35,35))
