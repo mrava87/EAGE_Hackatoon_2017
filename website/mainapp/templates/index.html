@@ -85,19 +85,19 @@
                             {% csrf_token %}
 							<div class="row uniform 50%">
 								<div class="3u 12u$(xsmall)">
-                          			<input type="checkbox" id="fault" name="fault">
+                          			<input type="checkbox" id="fault" name="fault" {% if fault %} checked {% endif %}>
 									<label for="fault">Fault</label>
 								</div>
 								<div class="3u 12u$(xsmall)">
-                          			<input type="checkbox" id="trap" name="trap">
+                          			<input type="checkbox" id="trap" name="trap"  {% if trap %} checked {% endif %}>
 									<label for="trap">Trap</label>
 								</div>
 								<div class="3u 12u$(xsmall)">
-                          			<input type="checkbox" id="face" name="face">
+                          			<input type="checkbox" id="face" name="face"  {% if face %} checked {% endif %}>
 									<label for="face">Face</label>
 								</div>
 								<div class="3u$ 12u$(xsmall)">
-                          			<input type="checkbox" id="bottle" name="bottle">
+                          			<input type="checkbox" id="bottle" name="bottle" {% if bottle %} checked {% endif %}>
 									<label for="bottle">Bottle</label>
 								</div>
                           </div>

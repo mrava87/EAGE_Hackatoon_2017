@@ -17,12 +17,14 @@ class IndexView(TemplateView):
     template_name = 'index.html'
     title = "It's not our FAULT!"
 
-    casc_dict = {}
+    casc_dict = {'fault': False, 'trap': False, 'face': False, 'bottle': False}
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['title'] = self.title
 
+        for key, value in self.casc_dict.iteritems():
+            context[key] = value
         context['images_loc'] = FileSystemStorage().location
         context['images_list'] = get_images_list(context['images_loc'])
         return context
@@ -54,4 +56,6 @@ class IndexView(TemplateView):
         print self.casc_dict
 
 
+        for key, value in self.casc_dict.iteritems():
+            context[key] = value
         return super(TemplateView, self).render_to_response(context)
