@@ -22,7 +22,15 @@
 				<div class="inner">
 					<!-- <span class="icon major fa-cloud"></span> -->
                   <h1>We are</h1>
-                  <p><span class="image"><img align="middle" style="width:600px;"src="{% static 'mainapp/images/logo.png' %}" /></span></p>
+                  <p><span class="image">
+                  <script type="text/javascript">
+                  if (screen.width > 600) {
+                  document.write("<img align=\"middle\" style=\"width:600px;\" src=\"{% static 'mainapp/images/logo.png' %}\" />");
+                  } else { 
+                  document.write("<img align=\"middle\" style=\"width:300px;\" src=\"{% static 'mainapp/images/logo2.png' %}\" />");
+                  } 
+                  </script>
+                  </span></p>
 				  <p>Geological seismic feature recognition using machine learning.</p>
 				  <ul class="actions">
 				    <li><a href="#one" class="button scrolly">Discover</a></li>
