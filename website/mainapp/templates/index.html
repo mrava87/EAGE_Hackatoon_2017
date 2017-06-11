@@ -22,7 +22,15 @@
 				<div class="inner">
 					<!-- <span class="icon major fa-cloud"></span> -->
                   <h1>We are</h1>
-                  <p><span class="image"><img align="middle" style="width:600px;"src="{% static 'mainapp/images/logo.png' %}" /></span></p>
+                  <p><span class="image">
+                  <script type="text/javascript">
+                  if (screen.width > 600) {
+                  document.write("<img align=\"middle\" style=\"width:600px;\" src=\"{% static 'mainapp/images/logo.png' %}\" />");
+                  } else { 
+                  document.write("<img align=\"middle\" style=\"width:300px;\" src=\"{% static 'mainapp/images/logo2.png' %}\" />");
+                  } 
+                  </script>
+                  </span></p>
 				  <p>Geological seismic feature recognition using machine learning.</p>
 				  <ul class="actions">
 				    <li><a href="#one" class="button scrolly">Discover</a></li>
@@ -38,7 +46,7 @@
 								<h2>Geophysics + <br>&nbsp;&nbsp; Machine learning &nbsp;=&nbsp; Win!</h2>
 							</header>
 							<p>With image-processing-inspired Haar cascades, we are able to identify geological features in seismic images. We train our machines with several kinds of synthetic models, which we build in-house.</p>
-                          <p><a href="#three" class="button scrolly">See our library</a></p>
+                          <p><a href="#two" class="button scrolly">Try it!</a></p>
 						</div>
 						<div class="6u$ 12u$(medium) important(medium)">
 							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
@@ -46,11 +54,75 @@
 					</div>
 				</div>
 			</section>
-
-
+      
+		<!-- Two -->
+			<section id="two" class="main style1">
+				<div class="container">
+					<div class="row 150%">
+                      	<div class="4u 12u$(medium)">
+							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
+						</div>
+						<div class="8u$ 12u$(medium)  important(medium)">
+							<header class="major">
+								<h2>Try with your own image!</h2>
+							</header>
+							<p>Explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation.</p>
+                            <h3>Cascade</h3>
+							<div class="row uniform 50%">
+								<div class="3u 12u$(xsmall)">
+                          			<input type="checkbox" id="fault" name="fault">
+									<label for="fault">Fault</label>
+								</div>
+								<div class="3u 12u$(xsmall)">
+                          			<input type="checkbox" id="trap" name="trap">
+									<label for="trap">Trap</label>
+								</div>
+								<div class="3u 12u$(xsmall)">
+                          			<input type="checkbox" id="face" name="face">
+									<label for="face">Face</label>
+								</div>
+								<div class="3u$ 12u$(xsmall)">
+                          			<input type="checkbox" id="bottle" name="bottle">
+									<label for="bottle">Bottle</label>
+								</div>
+                          </div>
+                          <br>
+                            <h3>Detection parameters</h3>
+							<div class="row uniform 50%">
+								<div class="3u 12u$(xsmall)" align="center">
+                                    <input id="slider-neighbors" type="range" min="0" max="500" step="10"  value="100"
+                                           onchange="document.getElementById('slider-neighbors-val').innerHTML = this.value;"/>
+                                    <em id="slider-neighbors-val" style="font-style: normal;">100</em>
+                                  	<label for="slider-neighbors">Number of neighbors</label>
+								</div>
+								<div class="3u 12u$(xsmall)" align="center">
+                                    <input id="slider-scale" type="range" min="0" max="500" step="10" value="100"
+                                           onchange="document.getElementById('slider-scale-val').innerHTML = this.value;"/>
+                                    <em id="slider-scale-val" style="font-style: normal;">100</em>
+                                    <label for="slider-scale">Number of neighbors</label>
+								</div>
+								<div class="3u 12u$(xsmall)" align="center">
+                                    <input id="slider-min" type="range" min="0" max="500" step="10"  value="100"
+                                           onchange="document.getElementById('slider-min-val').innerHTML = this.value;"/>
+                                    <em id="slider-min-val" style="font-style: normal;">100</em>
+                                    <label for="slider-min">Mininum size</label>
+								</div>
+								<div class="3u$ 12u$(xsmall)" align="center">
+                                    <input id="slider-max" type="range" min="0" max="500" step="10"  value="100"
+                                           onchange="document.getElementById('slider-max-val').innerHTML = this.value;"/>
+                                    <em id="slider-min-val" style="font-style: normal;">100</em>
+                                    <label for="slider-max">Maximum size</label>
+								</div>
+                          </div>                          
+                          <br><br><br>
+                          <p style="text-align: justify;"><a href="#three" class="button scrolly">See our library</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
       
 		<!-- Three -->
-			<section id="three" class="main style1 special">
+			<section id="three" class="main style2 special">
 				<div class="container">
 					<header class="major">
 						<h2>Our library</h2>
@@ -124,7 +196,7 @@
 -->
 
 		<!-- Five -->
-		<!--
+		
 			<section id="five" class="main style1">
 				<div class="container">
 					<header class="major special">
@@ -422,26 +494,26 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						<h5>Fit</h5>
 						<div class="box alt">
 							<div class="row uniform 50%">
-								<div class="12u"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+								<div class="12u"><span class="image fit"><img src="{% static 'mainapp/images/pic06.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span></div>
 							</div>
 						</div>
 						<h5>Left &amp; Right</h5>
-						<p><span class="image left"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						<p><span class="image right"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+						<p><span class="image left"><img src="{% static 'mainapp/images/pic05.jpg' %}" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+						<p><span class="image right"><img src="{% static 'mainapp/images/pic05.jpg' %}" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
 					</section>
 
 				</div>
 			</section>
-		-->
+		
 
 		<!-- Footer -->
 			<section id="footer">
