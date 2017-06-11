@@ -4,7 +4,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.text import slugify
 
 import os, glob
-from detectfaces import detectfaces
+from detect import detectfaces, detectfeatures
 
 def get_images_list(directory):
     files = glob.glob(directory + '/*.jpg')
@@ -18,6 +18,7 @@ class IndexView(TemplateView):
     title = "It's not our FAULT!"
 
     casc_dict = {}
+    uploaded_file_url = ''
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -42,9 +43,6 @@ class IndexView(TemplateView):
             context['images_loc'] = fs.location
             context['images_list'] = get_images_list(context['images_loc'])
 
-            result_file_url = detectfaces(uploaded_file_url)
-            context['result_file_url'] = result_file_url
-
         cascades = ['fault', 'trap', 'face', 'bottle']
         for c in cascades:
             if request.POST.get(c):
@@ -53,5 +51,8 @@ class IndexView(TemplateView):
                 self.casc_dict[c] = False
         print self.casc_dict
 
+        result_file_url = detectfeatures(uploaded_file_url,self.casc_dict)
+	context['result_file_url'] = result_file_url
+	
 
         return super(TemplateView, self).render_to_response(context)
