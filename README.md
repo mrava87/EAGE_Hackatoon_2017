@@ -11,7 +11,7 @@ for seismic data by taking advantage of [OpenCV library](http://opencv.org) rout
 So far we have trained Haar Cascade to detect seismic traps and faults (as well as beer bottles!),
 but we plan to train our model on other seismic features in the near future.
 
-[Website](website.png?raw=true "Website screenshot")
+![Website](website.png?raw=true "Website screenshot")
 
 ## Website
 If you want to detect seismic features in your awesome stacks, upload your image on our [website](http://itsnotourfault.herokuapp.com)
