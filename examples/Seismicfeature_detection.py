@@ -63,7 +63,4 @@ for imgname in imgnames:
 
 
 
-
-
-
 cv2.destroyAllWindows()

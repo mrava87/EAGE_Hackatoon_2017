@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 face_cascade = cv2.CascadeClassifier('../datasets/facerecognition/cascades/haarcascade_frontalface_default.xml')
 eye_cascade  = cv2.CascadeClassifier('../datasets/facerecognition/cascades/haarcascade_eye.xml')
-my_cascade = cv2.CascadeClassifier('../datasets/facerecognition/cascades/bottle_7stagecascade.xml')
+my_cascade   = cv2.CascadeClassifier('../datasets/facerecognition/cascades/bottle_7stagecascade.xml')
 
 cap = cv2.VideoCapture(0)
 
