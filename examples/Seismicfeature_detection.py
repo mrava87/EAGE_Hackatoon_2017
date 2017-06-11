@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 
-# Fault recognition in seismic image
+# Fault recognition in seismic image - to be run inside examples folder
 #
 # Authors: C. Birnie, M. Ravasi
 
