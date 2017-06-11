@@ -1,9 +1,5 @@
 #!/usr/bin/env python2./
-
-# Face recognition example from https://www.youtube.com/watch?v=88HdqNDQsEk
-# and https://pythonprogramming.net/haar-cascade-face-eye-detection-python-opencv-tutorial/
-#
-# Haar cascade creation for recognition
+# Haar cascade creation of background files for recognition - to be run in datasets/seismic/synthetics
 #
 # Authors: C. Birnie, M. Ravasi, F. Broggini
 
@@ -13,15 +9,22 @@
 import os
 from random import shuffle
 
-models = ['dip','fault','flat','trap','wedge']
 
-def create_bg(pos_model, basedir=None, n=0):
+
+def create_bg(pos_model, basedir=None, n=100):
+    """
+    Create bg.txt file
+    :param pos_model: 	Name of subfolders of positive model to be excluded
+    :param basedir: 	Directory where subdirs are located (if not provided, need to run script from that directory)
+    :param n: 	        number of files for each subfolder to be used
+    """
+
+    print 'Create bg.txt for positive '+pos_model
+
+    models = ['dip', 'fault', 'flat', 'trap', 'wedge']
 
     if basedir==None:
         basedir=os.getcwd()
-
-    if n==0:
-        n=100
 
     if pos_model not in models:
         print 'LOL! ' + pos_model + ' does not exist'
@@ -41,9 +44,10 @@ def create_bg(pos_model, basedir=None, n=0):
                 f.write(line + '\n')
 
 
-create_bg('dip',   n=250)
-create_bg('fault', n=250)
-create_bg('flat',  n=250)
-create_bg('trap',  n=250)
-create_bg('wedge', n=250)
+if __name__ == "__main__":
+    create_bg('dip',   n=600)
+    create_bg('fault', n=600)
+    create_bg('flat',  n=600)
+    create_bg('trap',  n=600)
+    create_bg('wedge', n=600)
 
