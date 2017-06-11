@@ -6,6 +6,8 @@ from django.utils.text import slugify
 import os, glob
 from detect import detectfaces, detectfeatures
 
+import decimal
+
 uploaded_file_url = ''
 current_image = 'pic01.jpg'
 
@@ -62,9 +64,20 @@ class IndexView(TemplateView):
             else:
                 self.casc_dict[c] = False
 
+        if 'neighbors' in request.POST:
+            neighbors = int(request.POST['neighbors'])
+        if 'scale' in request.POST:
+            scale = float(request.POST['scale'])
+            print 'SCALE  %f'% scale
+        if 'min' in request.POST:
+            mmin = int(request.POST['min'])
+        if 'max' in request.POST:
+            mmax = int(request.POST['max'])
+
         if uploaded_file_url:
             print(self.casc_dict)
-            result_file_url = detectfeatures(context['uploaded_file_url'], self.casc_dict)
+            result_file_url = detectfeatures(context['uploaded_file_url'], self.casc_dict, scale_fact=scale,
+                    nbrs=neighbors, minsize=mmin, maxsize=mmax)
             context['result_file_url'] = result_file_url
             current_image = os.path.basename(result_file_url)
             context['current_image'] = current_image
