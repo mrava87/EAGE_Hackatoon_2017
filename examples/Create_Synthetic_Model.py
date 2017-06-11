@@ -55,7 +55,7 @@ plt.colorbar()
 perc = 0
 center_x = 50
 center_z = np.array([80, 90])
-v = np.array([0, 400, 0])
+v = np.array([0, 600, 0])
 rho = v*0.6
 Trap0 = GM.TrapModel({'dims': [100, 100], 'type': 'trap'})
 Trap0.Deterministic(center_x, center_z, v, rho, perc)
