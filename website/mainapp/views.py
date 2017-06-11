@@ -4,12 +4,13 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.text import slugify
 
 import os, glob
+from detectfaces import detectfaces
 
 def get_images_list(directory):
-    files = glob.glob(directory + '/*.png')
+    files = glob.glob(directory + '/*.jpg')
     files.sort(key=os.path.getmtime)
     images_list = [ os.path.basename(x) for x in files[::-1] ]
-    return images_list[:9]
+    return images_list
 
 class IndexView(TemplateView):
 
@@ -38,5 +39,8 @@ class IndexView(TemplateView):
             context['uploaded_file_url'] = uploaded_file_url
             context['images_loc'] = fs.location
             context['images_list'] = get_images_list(context['images_loc'])
+
+            result_file_url = detectfaces(uploaded_file_url)
+            context['result_file_url'] = result_file_url
 
         return super(TemplateView, self).render_to_response(context)
