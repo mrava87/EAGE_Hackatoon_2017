@@ -53,8 +53,9 @@ class IndexView(TemplateView):
                 self.casc_dict[c] = False
         print self.casc_dict
 
-        result_file_url = detectfeatures(uploaded_file_url,self.casc_dict)
-	context['result_file_url'] = result_file_url
+        if self.uploaded_file_url:
+            result_file_url = detectfeatures(self.uploaded_file_url, self.casc_dict)
+            context['result_file_url'] = result_file_url
 	
 
         for key, value in self.casc_dict.iteritems():
