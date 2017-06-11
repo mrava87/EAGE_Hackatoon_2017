@@ -1,20 +1,19 @@
-cd ../datasets/facerecognition
+# List of commands for training HaarCascade on different objects
 
-# Create positive samples
-rm -rf info data positives.vec
-
+# Define path of git project
+export HAARCASCADE_ROOT='/Users/matteoravasi/Desktop/EAGE_Hackatoon_2017'
 
 ########
 # BOTTLE
 ########
+cd $HAARCASCADE_ROOT/datasets/facerecognition
+
 mkdir info
 opencv_createsamples -img bottle_2555.jpg -bg bg.txt -info info/info.lst -pngoutput info -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -num 1500
 opencv_createsamples -info info/info.lst -num 1500 -w 25 -h 55 -vec positives.vec
 
 opencv_createsamples -img bottle_2555.jpg -bg bg.txt -info info/info.lst                 -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -num 1500 -w 25 -h 55 -vec positives1.vec
 
-
-# Train cascade
 mkdir data
 opencv_traincascade -data data -vec positives1.vec -bg bg.txt -numStages 20 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 1000 -numNeg 600 -w 25 -h 55 -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
 
@@ -24,29 +23,26 @@ opencv_traincascade -data data -vec positives1.vec -bg bg.txt -numStages 20 -min
 # SEISMIC
 #########
 
-# FAULT DETECTION
-cd /Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/fault
-opencv_createsamples -info info/info.lst -num 1000 -w 20 -h 20 -vec positives.vec
-
-mkdir data
-opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 2 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 1000 -numNeg 800 -w 20 -h 20 -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
-
-
 # TRAP DETECTION
-cd /Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/trap
+cd $HAARCASCADE_ROOT/datasets/seismic/synthetics/trap
 opencv_createsamples -info info/info.lst -num 2000 -w 35 -h 35 -vec positives.vec
 
-rm -rf data
 mkdir data
 opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 10 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 2000 -numNeg 1000 -w 35 -h 35 -featureType HAAR -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
 #-featureType LBP
 
 
+# FAULT DETECTION
+cd $HAARCASCADE_ROOT/datasets/seismic/synthetics/fault
+opencv_createsamples -info info/info.lst -num 2000 -w 35 -h 35 -vec positives.vec
+
+mkdir data
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 10 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 2000 -numNeg 1000 -w 35 -h 35 -featureType HAAR -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
+
+
 # TRAP DETECTION MORE FILES
-cd /Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/trap
+cd $HAARCASCADE_ROOT/datasets/seismic/synthetics/trap
 opencv_createsamples -info info/info.lst -num 5000 -w 35 -h 35 -vec positives.vec
 
-rm -rf data
 mkdir data
 opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 10 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 5000 -numNeg 1000 -w 35 -h 35 -featureType HAAR -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
-#-featureType LBP

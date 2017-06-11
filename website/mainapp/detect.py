@@ -69,3 +69,4 @@ def detectfeatures(path,cascades,scale_fact=1.2,nbrs=3,minsize=00,maxsize=100):
 	cv2.imwrite(returnpath, img)
 
 	return returnpath
+
