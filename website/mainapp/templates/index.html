@@ -58,18 +58,17 @@
 		<!-- Two -->
 			<section id="two" class="main style1">
 				<div class="container">
+                    <form method="post" enctype="multipart/form-data" style="display: inline;"  action="#two">
+                                  {% csrf_token %}
 					<div class="row 150%">
                       	<div class="4u 12u$(medium)">
-							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
+							<span class="image fit"><img src="media/{{ current_image }}" alt="" /></span>
                             <div class="row uniform 50%">
                               <div class="6u 12u$(xsmall)">
-                                <form method="post" enctype="multipart/form-data" style="display: inline;">
-                                  {% csrf_token %}
                                   <label for="file-upload" class="button special">
                                   Upload
                                   </label>
                                   <input id="file-upload" style="display: none;" type="file" name="myfile" onchange="this.form.submit();" accept=".png">
-                                </form>
                               </div>
                              <div class="6u$ 12u$(xsmall)">
                               </div>
@@ -81,8 +80,6 @@
 							</header>
 							<p>Explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation.</p>
                             <h3>Cascade</h3>
-                            <form method="post" action="#two">
-                            {% csrf_token %}
 							<div class="row uniform 50%">
 								<div class="3u 12u$(xsmall)">
                           			<input type="checkbox" id="fault" name="fault" {% if fault %} checked {% endif %}>
@@ -131,12 +128,11 @@
                           </div>
                               <input type="submit" value="Detect" class="special" />
                               <input type="reset" value="Reset" />
-                            </form>
                           <br><br><br>
                           <p style="text-align: justify;"><a href="#three" class="button scrolly">See our library</a></p>
 						</div>
-
 					</div>
+                  </form>
 				</div>
 			</section>
       

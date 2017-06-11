@@ -19,6 +19,7 @@ class IndexView(TemplateView):
 
     casc_dict = {'fault': False, 'trap': False, 'face': False, 'bottle': False}
     uploaded_file_url = ''
+    current_image = 'pic01.jpg'
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -28,6 +29,7 @@ class IndexView(TemplateView):
             context[key] = value
         context['images_loc'] = FileSystemStorage().location
         context['images_list'] = get_images_list(context['images_loc'])
+        context['current_image'] = self.current_image
         return context
 
     def post(self, request, *args, **kwargs):
@@ -41,9 +43,9 @@ class IndexView(TemplateView):
             fname = slugify('_'.join(fname_ext[:-1])) + '.' + ext
             filename = fs.save(fname, myfile)
             self.uploaded_file_url = fs.url(filename)
-            context['uploaded_file_url'] = self.uploaded_file_url
             context['images_loc'] = fs.location
             context['images_list'] = get_images_list(context['images_loc'])
+        context['uploaded_file_url'] = self.uploaded_file_url
 
         cascades = ['fault', 'trap', 'face', 'bottle']
         for c in cascades:
@@ -56,6 +58,8 @@ class IndexView(TemplateView):
             print(self.casc_dict)
             result_file_url = detectfeatures(context['uploaded_file_url'], self.casc_dict)
             context['result_file_url'] = result_file_url
+            self.current_image = os.path.basename(result_file_url)
+            context['current_image'] = self.current_image
 	
 
         for key, value in self.casc_dict.iteritems():
