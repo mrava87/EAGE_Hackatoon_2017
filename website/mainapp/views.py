@@ -6,6 +6,9 @@ from django.utils.text import slugify
 import os, glob
 from detect import detectfaces, detectfeatures
 
+uploaded_file_url = ''
+current_image = 'pic01.jpg'
+
 def get_images_list(directory):
     files = glob.glob(directory + '/*.jpg')
     files.sort(key=os.path.getmtime)
@@ -29,7 +32,9 @@ class IndexView(TemplateView):
             context[key] = value
         context['images_loc'] = FileSystemStorage().location
         context['images_list'] = get_images_list(context['images_loc'])
-        context['current_image'] = self.current_image
+        context['current_image'] = current_image
+        print 'GET ' + current_image
+        print 'GET ' + uploaded_file_url
         return context
 
     def post(self, request, *args, **kwargs):
@@ -42,10 +47,13 @@ class IndexView(TemplateView):
             ext = fname_ext[-1]
             fname = slugify('_'.join(fname_ext[:-1])) + '.' + ext
             filename = fs.save(fname, myfile)
-            self.uploaded_file_url = fs.url(filename)
+            uploaded_file_url = fs.url(filename)
             context['images_loc'] = fs.location
             context['images_list'] = get_images_list(context['images_loc'])
-        context['uploaded_file_url'] = self.uploaded_file_url
+
+        global uploaded_file_url
+        global current_image
+        context['uploaded_file_url'] = uploaded_file_url
 
         cascades = ['fault', 'trap', 'face', 'bottle']
         for c in cascades:
@@ -54,16 +62,19 @@ class IndexView(TemplateView):
             else:
                 self.casc_dict[c] = False
 
-        if self.uploaded_file_url:
+        if uploaded_file_url:
             print(self.casc_dict)
             result_file_url = detectfeatures(context['uploaded_file_url'], self.casc_dict)
             context['result_file_url'] = result_file_url
-            self.current_image = os.path.basename(result_file_url)
-            context['current_image'] = self.current_image
+            current_image = os.path.basename(result_file_url)
+            context['current_image'] = current_image
 	
+        print context['current_image']
 
         for key, value in self.casc_dict.iteritems():
             context[key] = value
 
         print request.POST
+        print 'POST ' + current_image
+        print 'POST ' + uploaded_file_url
         return super(TemplateView, self).render_to_response(context)
