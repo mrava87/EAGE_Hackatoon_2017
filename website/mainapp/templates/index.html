@@ -19,6 +19,7 @@
 
 		<!-- Header -->
 			<section id="header">
+              <a href="https://github.com/mrava87/EAGE_Hackatoon_2017"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
 				<div class="inner">
 					<!-- <span class="icon major fa-cloud"></span> -->
                   <h1>We are</h1>
@@ -45,11 +46,11 @@
 							<header class="major">
 								<h2>Geophysics + <br>&nbsp;&nbsp; Machine learning &nbsp;=&nbsp; Win!</h2>
 							</header>
-							<p>With image-processing-inspired Haar cascades, we are able to identify geological features in seismic images. We train our machines with several kinds of synthetic models, which we build in-house.</p>
+							<p>With image-processing-inspired Haar cascades, we are able to identify geological features in seismic images. We train our machines with several kinds of synthetic models, which we build in-house. We provide a web app which we have baptized Django Untrained (the "Un" in silent).</p>
                           <p><a href="#two" class="button scrolly">Try it!</a></p>
 						</div>
 						<div class="6u$ 12u$(medium) important(medium)">
-							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
+							<span class="image fit"><img src="{% static 'mainapp/images/synthetic_model1_detection.png' %}" alt="" /></span>
 						</div>
 					</div>
 				</div>
@@ -58,45 +59,44 @@
 		<!-- Two -->
 			<section id="two" class="main style1">
 				<div class="container">
+                    <form method="post" enctype="multipart/form-data" style="display: inline;"  action="#two">
+                    {% csrf_token %}
 					<div class="row 150%">
-                      	<div class="4u 12u$(medium)">
-							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
+                      	<div class="6u 12u$(medium)">
+							<span class="image fit"><img src="media/{{ current_image }}" alt="" /></span>
                             <div class="row uniform 50%">
                               <div class="6u 12u$(xsmall)">
-                                <form method="post" enctype="multipart/form-data" style="display: inline;">
-                                  {% csrf_token %}
                                   <label for="file-upload" class="button special">
                                   Upload
                                   </label>
                                   <input id="file-upload" style="display: none;" type="file" name="myfile" onchange="this.form.submit();" accept=".png">
-                                </form>
                               </div>
                              <div class="6u$ 12u$(xsmall)">
+                                <input type="submit" value="Detect" class="special" />
+
                               </div>
                           </div>
 						</div>
-						<div class="8u$ 12u$(medium)  important(medium)">
+						<div class="6u$ 12u$(medium)  important(medium)">
 							<header class="major">
 								<h2>Try with your own image!</h2>
 							</header>
-							<p>Explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation explanation.</p>
+							<p>Feature detection couldn’t get any easier. Simply upload your image file, choose the cascade(s) to match the features you wish to detect and give it a spin.</p>
                             <h3>Cascade</h3>
-                            <form method="post" action="#two">
-                            {% csrf_token %}
 							<div class="row uniform 50%">
-								<div class="3u 12u$(xsmall)">
+								<div class="3u 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="fault" name="fault" {% if fault %} checked {% endif %}>
 									<label for="fault">Fault</label>
 								</div>
-								<div class="3u 12u$(xsmall)">
+								<div class="3u 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="trap" name="trap"  {% if trap %} checked {% endif %}>
 									<label for="trap">Trap</label>
 								</div>
-								<div class="3u 12u$(xsmall)">
+								<div class="3u 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="face" name="face"  {% if face %} checked {% endif %}>
 									<label for="face">Face</label>
 								</div>
-								<div class="3u$ 12u$(xsmall)">
+								<div class="3u$ 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="bottle" name="bottle" {% if bottle %} checked {% endif %}>
 									<label for="bottle">Bottle</label>
 								</div>
@@ -105,38 +105,54 @@
                             <h3>Detection parameters</h3>
 							<div class="row uniform 50%">
 								<div class="3u 12u$(xsmall)" align="center">
+                                    <input type="number" name="neighbors" min="1" max="50" value={{neighbors}}>
+<!--
                                     <input id="slider-neighbors" type="range" min="0" max="500" step="10"  value="100"
                                            onchange="document.getElementById('slider-neighbors-val').innerHTML = this.value;"/>
-                                    <em id="slider-neighbors-val" style="font-style: normal;">100</em>
+-->
+<!--                                    <em id="slider-neighbors-val" style="font-style: normal;">100</em>-->
                                   	<label for="slider-neighbors">Number of neighbors</label>
 								</div>
 								<div class="3u 12u$(xsmall)" align="center">
+                                    <input type="number" name="scale" min="1.1" max="3.0" step="0.1" value={{scale}}>
+<!--
                                     <input id="slider-scale" type="range" min="0" max="500" step="10" value="100"
                                            onchange="document.getElementById('slider-scale-val').innerHTML = this.value;"/>
-                                    <em id="slider-scale-val" style="font-style: normal;">100</em>
-                                    <label for="slider-scale">Number of neighbors</label>
+-->
+<!--                                    <em id="slider-scale-val" style="font-style: normal;">100</em>-->
+                                    <label for="slider-scale">Scale</label>
 								</div>
 								<div class="3u 12u$(xsmall)" align="center">
+                                   <input type="number" name="min" min="0" max="100" step="1" value={{min}}>
+<!--
                                     <input id="slider-min" type="range" min="0" max="500" step="10"  value="100"
                                            onchange="document.getElementById('slider-min-val').innerHTML = this.value;"/>
                                     <em id="slider-min-val" style="font-style: normal;">100</em>
-                                    <label for="slider-min">Mininum size</label>
+-->
+                                    <label for="slider-min">Mininum size (%)</label>
 								</div>
 								<div class="3u$ 12u$(xsmall)" align="center">
+                                   <input type="number" name="max" min="0" max="100" step="1" value={{max}}>                                  
+<!--
                                     <input id="slider-max" type="range" min="0" max="500" step="10"  value="100"
                                            onchange="document.getElementById('slider-max-val').innerHTML = this.value;"/>
                                     <em id="slider-min-val" style="font-style: normal;">100</em>
-                                    <label for="slider-max">Maximum size</label>
+-->
+                                    <label for="slider-max">Maximum size (%)</label>
 								</div>
                           </div>
-                              <input type="submit" value="Detect" class="special" />
-                              <input type="reset" value="Reset" />
-                            </form>
-                          <br><br><br>
-                          <p style="text-align: justify;"><a href="#three" class="button scrolly">See our library</a></p>
+                          
 						</div>
-
 					</div>
+                  </form>
+                  <br><br>
+                  <div class="row uniform 100%">
+                      <div class="5u 12u$(xsmall)" align="center">
+                    </div>
+                    <div class="7u 12u$(xsmall)" align="center">
+                  <p style="text-align: justify;"><a href="#three" class="button scrolly">See our library</a></p>
+                    </div>
+                  </div>
 				</div>
 			</section>
       
@@ -147,7 +163,7 @@
 						<h2>Our library</h2>
 					</header>
                     <p>You can categorize your images by uploading them to our user-contributed library.</p>
-                      <ul class="actions uniform">
+  <!--                    <ul class="actions uniform">
                       <li>
                         <form method="post" enctype="multipart/form-data" style="display: inline;">
                           {% csrf_token %}
@@ -157,7 +173,7 @@
                           <input id="file-upload" style="display: none;" type="file" name="myfile" onchange="this.form.submit();" accept=".png">
                         </form>
                       </li>
-                  </ul>
+                  </ul>-->
                       
 <!--					<p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>-->
 					<div class="row 150%">
@@ -214,7 +230,8 @@
 			</section>
 -->
 
-		<!-- Five -->
+<!--
+		 Five 
 		
 			<section id="five" class="main style1">
 				<div class="container">
@@ -535,6 +552,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				</div>
 			</section>
 		
+-->
 
 		<!-- Footer -->
 			<section id="footer">
@@ -546,7 +564,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Carlos Alberto da Costa Filho</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li>&copy;</li>
+					<li>Carlos Alberto da Costa Filho</li>
+					<li>Claire Birnie</li>
+					<li>Filippo Broggini</li>
+					<li>Gijs Straathof</li>
+					<li>Matteo Ravasi</li>
+                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 				</ul>
 			</section>
 

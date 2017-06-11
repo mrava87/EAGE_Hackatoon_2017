@@ -8,13 +8,13 @@ from Create_bg import create_bg
 from makeInfoLst import makeInfoLst
 
 models     = ['flat','dip','wedge','fault','trap']
-models_dir = '/datasets/seismic/synthetics_test/'
+models_dir = '/datasets/seismic/synthetics/'
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
 
 # Choose steps to run
-Create_Seismic_flag = True
+Create_Seismic_flag = False
 Preprocessing_flag  = True
 Create_bg_flag      = True
 Create_list_flag    = True
