@@ -40,8 +40,8 @@ class IndexView(TemplateView):
             ext = fname_ext[-1]
             fname = slugify('_'.join(fname_ext[:-1])) + '.' + ext
             filename = fs.save(fname, myfile)
-            uploaded_file_url = fs.url(filename)
-            context['uploaded_file_url'] = uploaded_file_url
+            self.uploaded_file_url = fs.url(filename)
+            context['uploaded_file_url'] = self.uploaded_file_url
             context['images_loc'] = fs.location
             context['images_list'] = get_images_list(context['images_loc'])
 
@@ -51,12 +51,15 @@ class IndexView(TemplateView):
                 self.casc_dict[c] = True
             else:
                 self.casc_dict[c] = False
-        print self.casc_dict
 
-        result_file_url = detectfeatures(uploaded_file_url,self.casc_dict)
-	context['result_file_url'] = result_file_url
+        if self.uploaded_file_url:
+            print(self.casc_dict)
+            result_file_url = detectfeatures(context['uploaded_file_url'], self.casc_dict)
+            context['result_file_url'] = result_file_url
 	
 
         for key, value in self.casc_dict.iteritems():
             context[key] = value
+
+        print request.POST
         return super(TemplateView, self).render_to_response(context)
