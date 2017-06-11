@@ -23,6 +23,7 @@ class IndexView(TemplateView):
     title = "It's not our FAULT!"
 
     casc_dict = {'fault': False, 'trap': False, 'face': False, 'bottle': False}
+    pars_dict = {'neighbors': 3, 'scale': 1.2, 'min': 20, 'max': 80}
     uploaded_file_url = ''
     current_image = 'pic01.jpg'
 
@@ -31,6 +32,8 @@ class IndexView(TemplateView):
         context['title'] = self.title
 
         for key, value in self.casc_dict.iteritems():
+            context[key] = value
+        for key, value in self.pars_dict.iteritems():
             context[key] = value
         context['images_loc'] = FileSystemStorage().location
         context['images_list'] = get_images_list(context['images_loc'])
@@ -65,19 +68,18 @@ class IndexView(TemplateView):
                 self.casc_dict[c] = False
 
         if 'neighbors' in request.POST:
-            neighbors = int(request.POST['neighbors'])
+            self.pars_dict['neighbors'] = int(request.POST['neighbors'])
         if 'scale' in request.POST:
-            scale = float(request.POST['scale'])
-            print 'SCALE  %f'% scale
+            self.pars_dict['scale'] = float(request.POST['scale'])
         if 'min' in request.POST:
-            mmin = int(request.POST['min'])
+            self.pars_dict['min'] = int(request.POST['min'])
         if 'max' in request.POST:
-            mmax = int(request.POST['max'])
+            self.pars_dict['max'] = int(request.POST['max'])
 
         if uploaded_file_url:
             print(self.casc_dict)
-            result_file_url = detectfeatures(context['uploaded_file_url'], self.casc_dict, scale_fact=scale,
-                    nbrs=neighbors, minsize=mmin, maxsize=mmax)
+            result_file_url = detectfeatures(context['uploaded_file_url'], self.casc_dict, scale_fact=self.pars_dict['scale'],
+                    nbrs=self.pars_dict['neighbors'], minsize=self.pars_dict['min'], maxsize=self.pars_dict['max'])
             context['result_file_url'] = result_file_url
             current_image = os.path.basename(result_file_url)
             context['current_image'] = current_image
@@ -85,6 +87,8 @@ class IndexView(TemplateView):
         print context['current_image']
 
         for key, value in self.casc_dict.iteritems():
+            context[key] = value
+        for key, value in self.pars_dict.iteritems():
             context[key] = value
 
         print request.POST

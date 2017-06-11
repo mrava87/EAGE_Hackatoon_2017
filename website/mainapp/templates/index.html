@@ -49,7 +49,7 @@
                           <p><a href="#two" class="button scrolly">Try it!</a></p>
 						</div>
 						<div class="6u$ 12u$(medium) important(medium)">
-							<span class="image fit"><img src="{% static 'mainapp/images/pic01.jpg' %}" alt="" /></span>
+							<span class="image fit"><img src="{% static 'mainapp/images/synthetic_model1_detection.png' %}" alt="" /></span>
 						</div>
 					</div>
 				</div>
@@ -83,19 +83,19 @@
 							<p>Feature detection couldn’t get any easier. Simply upload your image file, choose the cascade(s) to match the features you wish to detect and give it a spin.</p>
                             <h3>Cascade</h3>
 							<div class="row uniform 50%">
-								<div class="3u 12u$(xsmall)">
+								<div class="3u 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="fault" name="fault" {% if fault %} checked {% endif %}>
 									<label for="fault">Fault</label>
 								</div>
-								<div class="3u 12u$(xsmall)">
+								<div class="3u 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="trap" name="trap"  {% if trap %} checked {% endif %}>
 									<label for="trap">Trap</label>
 								</div>
-								<div class="3u 12u$(xsmall)">
+								<div class="3u 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="face" name="face"  {% if face %} checked {% endif %}>
 									<label for="face">Face</label>
 								</div>
-								<div class="3u$ 12u$(xsmall)">
+								<div class="3u$ 12u$(xsmall)" align="center">
                           			<input type="checkbox" id="bottle" name="bottle" {% if bottle %} checked {% endif %}>
 									<label for="bottle">Bottle</label>
 								</div>
@@ -104,7 +104,7 @@
                             <h3>Detection parameters</h3>
 							<div class="row uniform 50%">
 								<div class="3u 12u$(xsmall)" align="center">
-                                    <input type="number" name="neighbors" min="1" max="50" value=3>
+                                    <input type="number" name="neighbors" min="1" max="50" value={{neighbors}}>
 <!--
                                     <input id="slider-neighbors" type="range" min="0" max="500" step="10"  value="100"
                                            onchange="document.getElementById('slider-neighbors-val').innerHTML = this.value;"/>
@@ -113,7 +113,7 @@
                                   	<label for="slider-neighbors">Number of neighbors</label>
 								</div>
 								<div class="3u 12u$(xsmall)" align="center">
-                                    <input type="number" name="scale" min="1.1" max="3.0" step="0.1" value=1.2>
+                                    <input type="number" name="scale" min="1.1" max="3.0" step="0.1" value={{scale}}>
 <!--
                                     <input id="slider-scale" type="range" min="0" max="500" step="10" value="100"
                                            onchange="document.getElementById('slider-scale-val').innerHTML = this.value;"/>
@@ -122,7 +122,7 @@
                                     <label for="slider-scale">Scale (x10)</label>
 								</div>
 								<div class="3u 12u$(xsmall)" align="center">
-                                   <input type="number" name="min" min="0" max="100" step="1" value=20>
+                                   <input type="number" name="min" min="0" max="100" step="1" value={{min}}>
 <!--
                                     <input id="slider-min" type="range" min="0" max="500" step="10"  value="100"
                                            onchange="document.getElementById('slider-min-val').innerHTML = this.value;"/>
@@ -131,7 +131,7 @@
                                     <label for="slider-min">Mininum size (%)</label>
 								</div>
 								<div class="3u$ 12u$(xsmall)" align="center">
-                                   <input type="number" name="max" min="0" max="100" step="1" value=80>                                  
+                                   <input type="number" name="max" min="0" max="100" step="1" value={{max}}>                                  
 <!--
                                     <input id="slider-max" type="range" min="0" max="500" step="10"  value="100"
                                            onchange="document.getElementById('slider-max-val').innerHTML = this.value;"/>
