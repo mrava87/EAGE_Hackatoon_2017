@@ -38,33 +38,38 @@ def detectfeatures(path,cascades,scale_fact=1.2,nbrs=3,minsize=00,maxsize=100):
 		face_cascade = cv2.CascadeClassifier(path_cascade+'haarcascade_frontalface_default.xml')
 		faces = face_cascade.detectMultiScale(gray,scaleFactor=scale_fact,minNeighbors=nbrs,maxSize=(ma,ma),minSize=(mi,mi))
 		for (x,y,w,h) in faces:
-			cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-			cv2.putText(img,'face',(x,y),font,.7,(255,0,0),1)
+			cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),6)
+			cv2.rectangle(img, (x+ w/2, y + h/2), (x + w/2+1, y + h/2 + 1), (255, 0, 0), 6)
+			cv2.putText(img,'face',(x,y),font,2,(255,0,0),2)
 
 	if cascades['bottle'] == True:
 		bottle_cascade = cv2.CascadeClassifier(path_cascade+'bottle_7stagecascade.xml')
 		bottles = bottle_cascade.detectMultiScale(gray,scaleFactor=scale_fact,minNeighbors=nbrs,maxSize=(ma,ma),minSize=(mi,mi))
 		for (x,y,w,h) in bottles:
-			cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
-			cv2.putText(img,'bottle',(x,y),font,.7,(0,255,0),1)
+			cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),6)
+			cv2.rectangle(img, (x+ w/2, y + h/2), (x + w/2+1, y + h/2 + 1), (0, 255, 0), 6)
+			cv2.putText(img,'bottle',(x,y),font,2,(0,255,0),2)
 
 	if cascades['fault'] == True:
-		#fault_cascade = cv2.CascadeClassifier(path_cascade+'haarcascade_frontalface_default.xml')
+		fault_cascade = cv2.CascadeClassifier(path_cascade+'fault_cascades.xml')
 		faults = fault_cascade.detectMultiScale(gray,scaleFactor=scale_fact,minNeighbors=nbrs,maxSize=(ma,ma),minSize=(mi,mi))
 		for (x,y,w,h) in faults:
-			cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
-			cv2.putText(img,'fault',(x,y),font,.7,(0,0,255),1)
+			cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),6)
+			cv2.rectangle(img, (x+ w/2, y + h/2), (x + w/2+1, y + h/2 + 1), (0, 0, 255), 6)
+			cv2.putText(img,'fault',(x,y),font,2,(0,0,255),2)
 
 	if cascades['trap'] == True:
 		trap_cascade = cv2.CascadeClassifier(path_cascade+'trap_3stagecascade.xml')
 		traps = trap_cascade.detectMultiScale(gray,scaleFactor=scale_fact,minNeighbors=nbrs,maxSize=(ma,ma),minSize=(mi,mi))
 		for (x,y,w,h) in traps:
-			cv2.rectangle(img,(x,y),(x+w,y+h),(255,255,255),2)
-			cv2.putText(img,'trap',(x,y),font,.7,(255,255,255),1)
+			cv2.rectangle(img,(x,y),(x+w,y+h),(255,255,255),6)
+			cv2.rectangle(img, (x+ w/2, y + h/2), (x + w/2+1, y + h/2 + 1), (255, 255, 255), 6)
+			cv2.putText(img,'trap',(x,y),font,2,(255,255,255),2)
 
 	fname = path.split('.')
+	ext = fname[-1]
 	filename = ('.').join(fname[:-1])
-	returnpath = settings.BASE_DIR + filename + "_detected.jpg" 
+	returnpath = settings.BASE_DIR + filename + "_detected." + ext 
 
 	cv2.imwrite(returnpath, img)
 
