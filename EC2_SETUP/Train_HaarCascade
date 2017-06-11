@@ -9,6 +9,7 @@ rm -rf info data positives.vec
 ########
 mkdir info
 opencv_createsamples -img ./pos/1.jpg -bg bg.txt -info info/info.lst -pngoutput info -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -num 1500
+
 opencv_createsamples -info info/info.lst -num 1500 -w 25 -h 55 -vec positives.vec
 
 

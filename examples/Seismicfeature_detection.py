@@ -6,7 +6,7 @@
 
 import cv2
 
-path_cascade  = '/Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/cascades/'
+path_cascade  = '../datasets/seismic/synthetics/cascades/'
 trap_cascade = cv2.CascadeClassifier(path_cascade+'trap_3stagecascade.xml')
 
 imgnames     = ['imagetest_withtrap.png']
@@ -15,7 +15,7 @@ imgnames     = ['imagetest_withtrap.png']
 
 for imgname in imgnames:
 
-    img=cv2.imread('/Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/targets/'+imgname,1)
+    img=cv2.imread('../datasets/seismic/synthetics/targets/'+imgname,1)
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     gray = cv2.equalizeHist(gray)
 
