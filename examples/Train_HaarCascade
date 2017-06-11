@@ -26,7 +26,17 @@ opencv_traincascade -data data -vec positives1.vec -bg bg.txt -numStages 20 -min
 
 # FAULT DETECTION
 cd /Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/fault
-opencv_createsamples -info info/info.lst -num 1000 -w 50 -h 50 -vec positives.vec
+opencv_createsamples -info info/info.lst -num 1000 -w 20 -h 20 -vec positives.vec
 
 mkdir data
-opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 2 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 1000 -numNeg 800 -w 50 -h 50 -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 2 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 1000 -numNeg 800 -w 20 -h 20 -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
+
+
+# TRAP DETECTION
+cd /Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/trap
+opencv_createsamples -info info/info.lst -num 2000 -w 35 -h 35 -vec positives.vec
+
+rm -rf data
+mkdir data
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numStages 10 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 2000 -numNeg 1000 -w 35 -h 35 -featureType HAAR -mode ALL -mem 1024 -precalcValBufSize 1024 -precalcIdxBufSize 1024
+#-featureType LBP

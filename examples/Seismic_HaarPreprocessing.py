@@ -23,7 +23,7 @@ def preprocessing(models, basedir=None, size=(50,50)):
 
     for model in models:
         for imgfile in os.listdir('/'.join((basedir, model,))):
-            if 'stack' in imgfile:
+            if 'stack.png' in imgfile:
                 #print '/'.join((model,imgfile,))
                 img = mc.imread('/'.join((model,imgfile,)),mode='L')
                 #print img.shape
@@ -34,6 +34,7 @@ def preprocessing(models, basedir=None, size=(50,50)):
                 mc.toimage(img).save('/'.join((model,imgfile[:-4],))+'sub.png')
 
 
+
 if __name__ == "__main__":
     models = ['dip', 'fault', 'flat', 'trap', 'wedge']
-    preprocessing(models, size=(50,50))
+    preprocessing(models, size=(35,35))

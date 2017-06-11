@@ -41,9 +41,9 @@ def create_bg(pos_model, basedir=None, n=0):
                 f.write(line + '\n')
 
 
-create_bg('dip', n=200)
-create_bg('fault', n=200)
-create_bg('flat', n=200)
-create_bg('trap', n=200)
-create_bg('wedge', n=200)
+create_bg('dip',   n=250)
+create_bg('fault', n=250)
+create_bg('flat',  n=250)
+create_bg('trap',  n=250)
+create_bg('wedge', n=250)
 

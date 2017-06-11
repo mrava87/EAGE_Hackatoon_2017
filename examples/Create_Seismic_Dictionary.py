@@ -16,7 +16,7 @@ filename = 'dict'
 
 # model
 models            = ['flat','dip','wedge','fault','trap']
-nsubmodels        = 1000
+nsubmodels        = 2000
 savemod           = False
 norm_seismic      = 6e12
 moddims           = [100, 100]
@@ -41,6 +41,7 @@ for imod in range(nsubmodels_sum):
     if imod<nsubmodels_cumsum[0]:
 
         # Make stochastic layered models
+        print('layer '+str(imod))
         dv   = [1500, 2000]
         drho = [1000, 1800]
         nint = 3
@@ -53,6 +54,7 @@ for imod in range(nsubmodels_sum):
     elif imod<nsubmodels_cumsum[1]:
 
         # Make stochastic dipping models
+        print('dip '+str(imod))
         vback   = [1500, 1800]
         rhoback = [1000, 1200]
         nint    = 3
@@ -68,6 +70,7 @@ for imod in range(nsubmodels_sum):
     elif imod<nsubmodels_cumsum[2]:
 
         # Make stochastic wedge models
+        print('wedge '+str(imod))
         vback   = [1500, 1800]
         rhoback = [1000, 1200]
         p       = [0.2, 0.4]
@@ -81,6 +84,7 @@ for imod in range(nsubmodels_sum):
     elif imod<nsubmodels_cumsum[3]:
 
         # Make stochastic fault models
+        print('fault ' + str(imod))
         dv   = [1500, 2000]
         drho = [1000, 1800]
         nint = 3
@@ -93,10 +97,11 @@ for imod in range(nsubmodels_sum):
     elif imod<nsubmodels_cumsum[4]:
 
         # Make stochastic trap models
+        print('trap ' + str(imod))
         perc = 0
-        nint = 3
+        nint = 1
         center_x = 50
-        dcenter_z = [50, 180]
+        dcenter_z = [80, 110]
         dv = [1500, 2000]
         drho = [1000, 1800]
 

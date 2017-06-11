@@ -30,8 +30,10 @@ import os
 import ntpath
 from shutil import copyfile
 
+figsize = [35,35]
+model   = 'trap'
 # Change to directory containing positive image folder
-os.chdir("/Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/fault/")
+os.chdir("/Users/matteoravasi/Desktop/EAGE_Hackatoon_2017/datasets/seismic/synthetics/"+model+"/")
 currentPath=os.getcwd()
 
 positiveFPath=currentPath+'/*_stacksub.png'
@@ -67,7 +69,7 @@ for file in allPosFiles:
 
     # Write list file
     annFile=posDir+figFile[:-4]+'.png'
-    infoF.write(annFile[len(currentPath)+6:]+' 1 0 0 49 49')
+    infoF.write(annFile[len(currentPath)+6:]+' 1 0 0 '+str(figsize[0])+' '+str(figsize[1]))
     infoF.write('\n')
 
     # Write annotation file
