@@ -57,6 +57,8 @@ for imgname in imgnames:
 
     cv2.imshow(imgname,img)
 
+    cv2.imwrite('../datasets/seismic/synthetics/targets/'+imgname[:-4]+'_detection.png', img)
+
     k=cv2.waitKey(0)
 
 
