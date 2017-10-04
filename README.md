@@ -13,6 +13,6 @@ traps and faults (as well as beer bottles!), but we plan to train our model on o
 ![Website](website_ban.png?raw=true "Website screenshot")
 
 ## Website
-If you want to detect seismic features in your awesome stacks, upload your image on our [website](http://itsnotourfault.herokuapp.com)
+If you want to detect seismic features in your awesome stacks, upload your image on our [website](http://itsnotourfault.sbpsmwcqtx.eu-west-2.elasticbeanstalk.com/)
 and we can do it for you!
 
