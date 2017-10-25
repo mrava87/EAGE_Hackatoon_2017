@@ -1,0 +1,591 @@
+<!DOCTYPE HTML>
+<!--
+	Photon by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% load static %}
+<html>
+	<head>
+		<title>{{title}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'mainapp/assets/css/main2.css' %}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header">
+              <a href="https://github.com/mrava87/EAGE_Hackatoon_2017"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+				<div class="inner">
+					<!-- <span class="icon major fa-cloud"></span> -->
+                  <h1>We are</h1>
+                  <p><span class="image">
+                  <script type="text/javascript">
+                  if (screen.width > 600) {
+                  document.write("<img align=\"middle\" style=\"width:600px;\" src=\"{% static 'mainapp/images/logo.png' %}\" />");
+                  } else { 
+                  document.write("<img align=\"middle\" style=\"width:300px;\" src=\"{% static 'mainapp/images/logo2.png' %}\" />");
+                  } 
+                  </script>
+                  </span></p>
+				  <p>Geological seismic feature recognition using machine learning.</p>
+				  <ul class="actions">
+				    <li><a href="#one" class="button scrolly">Discover</a></li>
+				  </ul>
+				</div>
+			</section>
+		<!-- One -->
+			<section id="one" class="main style2">
+				<div class="container">
+					<div class="row 150%">
+						<div class="6u 12u$(medium)">
+							<header class="major">
+								<h2>Geophysics + <br>&nbsp;&nbsp; Machine learning &nbsp;=&nbsp; Win!</h2>
+							</header>
+							<p>With image-processing-inspired Haar cascades, we are able to identify geological features in seismic images. We train our machines with several kinds of synthetic models, which we build in-house. We provide a web app which we have baptized Django Untrained (the "Un" in silent).</p>
+                          <p><a href="#two" class="button scrolly">Try it!</a></p>
+						</div>
+						<div class="6u$ 12u$(medium) important(medium)">
+							<span class="image fit"><img src="{% static 'mainapp/images/example.png' %}" alt="" /></span>
+						</div>
+					</div>
+				</div>
+			</section>
+      
+		<!-- Two -->
+<section id="two" class="main style1">
+  <div class="container">
+
+    <form method="post" enctype="multipart/form-data" style="display: inline;"  action="#two">
+    {% csrf_token %}
+      <div class="row 150%">
+
+        <div class="6u 12u$(medium)">
+          <span class="image fit">
+          {% if model.resultfile %}<img src="{{ model.resultfile.url }}" alt="" />
+          {% else %}<img src="{% static 'mainapp/images/example.png' %}" alt="" />
+          {% endif %}</span>
+          <div class="row uniform 50%">
+            <div class="6u 12u$(xsmall)">
+              <label for="file-upload" class="button special">Upload</label>
+              <input id="file-upload" style="display: none;" type="file" name="picture" onchange="this.form.submit();" accept=".png">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="submit" value="Detect" class="special" />
+            </div>
+          </div>
+        </div>
+
+        <div class="6u$ 12u$(medium)  important(medium)">
+          <header class="major"> <h2>Try with your own image!</h2> </header>
+          <p>Feature detection couldn’t get any easier. Simply upload your image file, choose the cascade(s) to match the features you wish to detect and give it a spin.</p>
+          <h3>Cascade</h3>
+            <div class="row uniform 50%">
+
+              <div class="3u 12u$(xsmall)" align="center">
+                <input type="checkbox" id="fault" name="fault" {% if model.fault %} checked {% endif %}>
+                <label for="fault">Fault</label>
+              </div>
+              <div class="3u 12u$(xsmall)" align="center">
+                <input type="checkbox" id="trap" name="trap"  {% if model.trap %} checked {% endif %}>
+                <label for="trap">Trap</label>
+              </div>
+              <div class="3u 12u$(xsmall)" align="center">
+                <input type="checkbox" id="face" name="face"  {% if model.face %} checked {% endif %}>
+                <label for="face">Face</label>
+              </div>
+              <div class="3u$ 12u$(xsmall)" align="center">
+                <input type="checkbox" id="bottle" name="bottle" {% if model.bottle %} checked {% endif %}>
+                <label for="bottle">Bottle</label>
+              </div>
+            </div>
+
+          <br>
+
+          <h3>Detection parameters</h3>
+            <div class="row uniform 50%">
+
+              <div class="3u 12u$(xsmall)" align="center">
+                <input type="number" name="neighbors" min="1" max="50" value={{model.neighbors}}>
+                <label for="neighbors">Number of neighbors</label>
+              </div>
+              <div class="3u 12u$(xsmall)" align="center">
+                <input type="number" name="scale" min="1.1" max="3.0" step="0.1" value={{model.scale}}>
+                <label for="scale">Scale</label>
+              </div>
+              <div class="3u 12u$(xsmall)" align="center">
+                <input type="number" name="minsize" min="0" max="100" step="1" value={{model.minsize}}>
+                <label for="minsize">Mininum size (%)</label>
+              </div>
+              <div class="3u$ 12u$(xsmall)" align="center">
+                <input type="number" name="maxsize" min="0" max="100" step="1" value={{model.maxsize}}>
+                <label for="maxsize">Maximum size (%)</label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+<!--
+                                    <input id="slider-neighbors" type="range" min="0" max="500" step="10"  value="100"
+                                           onchange="document.getElementById('slider-neighbors-val').innerHTML = this.value;"/>
+                                    <em id="slider-neighbors-val" style="font-style: normal;">100</em>
+
+                                    <input id="slider-scale" type="range" min="0" max="500" step="10" value="100"
+                                           onchange="document.getElementById('slider-scale-val').innerHTML = this.value;"/>
+
+                                    <em id="slider-scale-val" style="font-style: normal;">100</em>
+
+                                    <input id="slider-min" type="range" min="0" max="500" step="10"  value="100"
+                                           onchange="document.getElementById('slider-min-val').innerHTML = this.value;"/>
+                                    <em id="slider-min-val" style="font-style: normal;">100</em>
+
+                                    <input id="slider-max" type="range" min="0" max="500" step="10"  value="100"
+                                           onchange="document.getElementById('slider-max-val').innerHTML = this.value;"/>
+                                    <em id="slider-min-val" style="font-style: normal;">100</em>
+-->
+                  <br><br>
+                  <div class="row uniform 100%">
+                      <div class="5u 12u$(xsmall)" align="center">
+                    </div>
+                    <div class="7u 12u$(xsmall)" align="center">
+                  <p style="text-align: justify;"><a href="#three" class="button scrolly">See our library</a></p>
+                    </div>
+                  </div>
+				</div>
+			</section>
+      
+		<!-- Three -->
+			<section id="three" class="main style2 special">
+				<div class="container">
+					<header class="major">
+						<h2>Our library</h2>
+					</header>
+                    <p>You can categorize your images by uploading them to our user-contributed library.</p>
+  <!--                    <ul class="actions uniform">
+                      <li>
+                        <form method="post" enctype="multipart/form-data" style="display: inline;">
+                          {% csrf_token %}
+                          <label for="file-upload" class="button special">
+                          Upload
+                          </label>
+                          <input id="file-upload" style="display: none;" type="file" name="myfile" onchange="this.form.submit();" accept=".png">
+                        </form>
+                      </li>
+                  </ul>-->
+                      
+<!--					<p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>-->
+					<div class="row 150%">
+                    {% for image in images_list %}
+						<div class="4u 12u$(medium)">
+							<span class="image fit"><img style="height:240px;" src="{{ image }}" alt="" /></span>
+<!--							<h3>{{image}}</h3>-->
+<!--							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>-->
+<!--
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+-->
+						</div>
+                      {% endfor %}
+					</div>
+<!--                  {{images_list}}-->
+
+<!--
+						<div class="4u 12u$(medium)">
+							<span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span>
+							<h3>Magna feugiat lorem</h3>
+							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</div>
+						<div class="4u$ 12u$(medium)">
+							<span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span>
+							<h3>Magna feugiat lorem</h3>
+							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</div>
+-->
+				</div>
+			</section>      
+
+
+		<!-- Four -->
+<!--
+			<section id="four" class="main style1 special">
+				<div class="container">
+					<header class="major">
+						<h2>Geophysics + Machine learning = Win!</h2>
+					</header>
+					<p>With Haar cascades, we are able to identify geological features in seismic images. We train our machines with several kinds of synthetic models, which we build in-house.</p>
+					<ul class="actions uniform">
+                    <span class="image fit" style="width: 500px;"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span>
+					</ul>
+                  	<p>Or check out our <a href="#three" class="scrolly">gallery below!</a></p>
+				</div>
+			</section>
+-->
+
+<!--
+		 Five 
+		
+			<section id="five" class="main style1">
+				<div class="container">
+					<header class="major special">
+						<h2>Elements</h2>
+					</header>
+
+					<section>
+						<h4>Text</h4>
+						<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+						This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+						This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+						<hr />
+						<header>
+							<h4>Heading with a Subtitle</h4>
+							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+						</header>
+						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+						<header>
+							<h5>Heading with a Subtitle</h5>
+							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+						</header>
+						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+						<hr />
+						<h2>Heading Level 2</h2>
+						<h3>Heading Level 3</h3>
+						<h4>Heading Level 4</h4>
+						<h5>Heading Level 5</h5>
+						<h6>Heading Level 6</h6>
+						<hr />
+						<h5>Blockquote</h5>
+						<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+						<h5>Preformatted</h5>
+						<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+print 'Iteration ' + i;
+deck.shuffle();
+i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+					</section>
+
+					<section>
+						<h4>Lists</h4>
+						<div class="row">
+							<div class="6u 12u$(medium)">
+								<h5>Unordered</h5>
+								<ul>
+									<li>Dolor pulvinar etiam.</li>
+									<li>Sagittis adipiscing.</li>
+									<li>Felis enim feugiat.</li>
+								</ul>
+								<h5>Alternate</h5>
+								<ul class="alt">
+									<li>Dolor pulvinar etiam.</li>
+									<li>Sagittis adipiscing.</li>
+									<li>Felis enim feugiat.</li>
+								</ul>
+							</div>
+							<div class="6u$ 12u$(medium)">
+								<h5>Ordered</h5>
+								<ol>
+									<li>Dolor pulvinar etiam.</li>
+									<li>Etiam vel felis viverra.</li>
+									<li>Felis enim feugiat.</li>
+									<li>Dolor pulvinar etiam.</li>
+									<li>Etiam vel felis lorem.</li>
+									<li>Felis enim et feugiat.</li>
+								</ol>
+								<h5>Icons</h5>
+								<ul class="icons">
+									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<h5>Actions</h5>
+						<div class="row">
+							<div class="6u 12u$(medium)">
+								<ul class="actions">
+									<li><a href="#" class="button special">Default</a></li>
+									<li><a href="#" class="button">Default</a></li>
+								</ul>
+								<ul class="actions small">
+									<li><a href="#" class="button special small">Small</a></li>
+									<li><a href="#" class="button small">Small</a></li>
+								</ul>
+								<ul class="actions vertical">
+									<li><a href="#" class="button special">Default</a></li>
+									<li><a href="#" class="button">Default</a></li>
+								</ul>
+								<ul class="actions vertical small">
+									<li><a href="#" class="button special small">Small</a></li>
+									<li><a href="#" class="button small">Small</a></li>
+								</ul>
+							</div>
+							<div class="6u 12u$(medium)">
+								<ul class="actions vertical">
+									<li><a href="#" class="button special fit">Default</a></li>
+									<li><a href="#" class="button fit">Default</a></li>
+								</ul>
+								<ul class="actions vertical small">
+									<li><a href="#" class="button special small fit">Small</a></li>
+									<li><a href="#" class="button small fit">Small</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h4>Table</h4>
+						<h5>Default</h5>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Item One</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Two</td>
+										<td>Vis ac commodo adipiscing arcu aliquet.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Three</td>
+										<td> Morbi faucibus arcu accumsan lorem.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Four</td>
+										<td>Vitae integer tempus condimentum.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Five</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="2"></td>
+										<td>100.00</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+
+						<h5>Alternate</h5>
+						<div class="table-wrapper">
+							<table class="alt">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Item One</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Two</td>
+										<td>Vis ac commodo adipiscing arcu aliquet.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Three</td>
+										<td> Morbi faucibus arcu accumsan lorem.</td>
+										<td>29.99</td>
+									</tr>
+									<tr>
+										<td>Item Four</td>
+										<td>Vitae integer tempus condimentum.</td>
+										<td>19.99</td>
+									</tr>
+									<tr>
+										<td>Item Five</td>
+										<td>Ante turpis integer aliquet porttitor.</td>
+										<td>29.99</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="2"></td>
+										<td>100.00</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</section>
+
+					<section>
+						<h4>Buttons</h4>
+						<ul class="actions">
+							<li><a href="#" class="button special">Special</a></li>
+							<li><a href="#" class="button">Default</a></li>
+						</ul>
+						<ul class="actions">
+							<li><a href="#" class="button big">Big</a></li>
+							<li><a href="#" class="button">Default</a></li>
+							<li><a href="#" class="button small">Small</a></li>
+						</ul>
+						<ul class="actions fit">
+							<li><a href="#" class="button fit">Fit</a></li>
+							<li><a href="#" class="button special fit">Fit</a></li>
+							<li><a href="#" class="button fit">Fit</a></li>
+						</ul>
+						<ul class="actions fit small">
+							<li><a href="#" class="button special fit small">Fit + Small</a></li>
+							<li><a href="#" class="button fit small">Fit + Small</a></li>
+							<li><a href="#" class="button special fit small">Fit + Small</a></li>
+						</ul>
+						<ul class="actions">
+							<li><a href="#" class="button special icon fa-download">Icon</a></li>
+							<li><a href="#" class="button icon fa-download">Icon</a></li>
+						</ul>
+						<ul class="actions">
+							<li><span class="button special disabled">Disabled</span></li>
+							<li><span class="button disabled">Disabled</span></li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Form</h4>
+						<form method="post" action="#">
+                                                            {% csrf_token %}
+
+							<div class="row uniform 50%">
+								<div class="6u 12u$(xsmall)">
+									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+								</div>
+								<div class="6u$ 12u$(xsmall)">
+									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+								</div>
+								<div class="12u$">
+									<div class="select-wrapper">
+										<select name="demo-category" id="demo-category">
+											<option value="">- Category -</option>
+											<option value="1">Manufacturing</option>
+											<option value="1">Shipping</option>
+											<option value="1">Administration</option>
+											<option value="1">Human Resources</option>
+										</select>
+									</div>
+								</div>
+								<div class="4u 12u$(small)">
+									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+									<label for="demo-priority-low">Low</label>
+								</div>
+								<div class="4u 12u$(small)">
+									<input type="radio" id="demo-priority-normal" name="demo-priority">
+									<label for="demo-priority-normal">Normal</label>
+								</div>
+								<div class="4u$ 12u$(small)">
+									<input type="radio" id="demo-priority-high" name="demo-priority">
+									<label for="demo-priority-high">High</label>
+								</div>
+								<div class="6u 12u$(small)">
+									<input type="checkbox" id="demo-copy" name="demo-copy">
+									<label for="demo-copy">Email me a copy</label>
+								</div>
+								<div class="6u$ 12u$(small)">
+									<input type="checkbox" id="demo-human" name="demo-human" checked>
+									<label for="demo-human">Not a robot</label>
+								</div>
+								<div class="12u$">
+									<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+								</div>
+								<div class="12u$">
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="special" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</section>
+
+					<section>
+						<h4>Image</h4>
+						<h5>Fit</h5>
+						<div class="box alt">
+							<div class="row uniform 50%">
+								<div class="12u"><span class="image fit"><img src="{% static 'mainapp/images/pic06.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic04.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic02.jpg' %}" alt="" /></span></div>
+								<div class="4u"><span class="image fit"><img src="{% static 'mainapp/images/pic03.jpg' %}" alt="" /></span></div>
+							</div>
+						</div>
+						<h5>Left &amp; Right</h5>
+						<p><span class="image left"><img src="{% static 'mainapp/images/pic05.jpg' %}" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+						<p><span class="image right"><img src="{% static 'mainapp/images/pic05.jpg' %}" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+					</section>
+
+				</div>
+			</section>
+		
+-->
+
+		<!-- Footer -->
+			<section id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy;</li>
+					<li>Carlos Alberto da Costa Filho</li>
+					<li>Claire Birnie</li>
+					<li>Filippo Broggini</li>
+					<li>Gijs Straathof</li>
+					<li>Matteo Ravasi</li>
+                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</section>
+
+		<!-- Scripts -->
+			<script src="{% static 'mainapp/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'mainapp/assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{% static 'mainapp/assets/js/main.js' %}"></script>
+
+	</body>
+</html>

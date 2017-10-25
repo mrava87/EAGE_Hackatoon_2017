@@ -1,0 +1,12 @@
+venv
+*.pyc
+staticfiles
+.env
+db.sqlite3
+mainapp/migrations/*
+media/mainapp/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

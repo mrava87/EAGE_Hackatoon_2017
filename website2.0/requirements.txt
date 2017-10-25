@@ -1,0 +1,8 @@
+Django==1.7.7
+gunicorn==19.7.1
+whitenoise==3.3.0
+numpy==1.11.1
+psycopg2==2.7.1
+Pillow==4.1.1
+django-storages==1.5.0
+boto==2.47.0
